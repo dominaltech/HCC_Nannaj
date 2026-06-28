@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Meet the dedicated and experienced faculty at HCC High School, Solapur. Our expert teachers are committed to student excellence and holistic development.">
+    <meta name="keywords" content="HCC High School Staff, Teachers, Faculty, Solapur School Teachers">
+    <meta name="theme-color" content="#0f172a">
+
+    <!-- SEO Meta Tags - ADD THESE -->
+  <meta name="description" content="HCC High School and Junior College Solapur - Hindustan Covenant Church School providing quality education in Solapur, Maharashtra">
+  <meta name="keywords" content="HCC High School, Solapur school, Hindustan Covenant Church, Junior College Solapur, education Solapur">
+  <meta name="author" content="HCC High School Solapur">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph Tags - ADD THESE -->
+  <meta property="og:title" content="HCC High School Solapur">
+  <meta property="og:description" content="Hindustan Covenant Church High School and Junior College, Solapur">
+  <meta property="og:image" content="https://hccsolapur.in/hcclogo.jpg">
+  <meta property="og:url" content="https://hccsolapur.in">
+  <meta property="og:type" content="website">
+  
+  <!-- Canonical URL - ADD THIS (change URL for each page) -->
+  <link rel="canonical" href="https://hccsolapur.in/staff.html">
+  
+  <!-- Schema Markup - ADD THIS -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HighSchool",
+    "name": "Hindustan Covenant Church High School and Junior College",
+    "alternateName": "HCC High School Solapur",
+    "url": "https://hccsolapur.in",
+    "logo": "https://hccsolapur.in/hcclogo.jpg",
+    "image": "https://hccsolapur.in/hcc.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Solapur",
+      "addressRegion": "Maharashtra",
+      "addressCountry": "IN"
+    }
+  }
+  </script>
+    <title>Our Faculty & Staff | HCC High School, Solapur</title>
+    
+    <!-- Global Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Lucide Icons Vector Library -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- GSAP Animations & ScrollTrigger CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        /* Page Header */
+        .page-header {
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+            background-color: var(--bg-light);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .page-header h1 {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Intro Section styling */
+        .intro-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 5rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .intro-section h2 {
+            font-family: var(--font-serif);
+            font-size: 2.25rem;
+            color: var(--accent-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-section p {
+            font-size: 1.1rem;
+            color: var(--text-charcoal);
+            line-height: 1.8;
+        }
+
+        /* Leadership Section styling */
+        .leadership-section {
+            padding: 5rem 2rem;
+            background-color: var(--bg-off);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .leadership-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .leadership-grid {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .leader-card {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: 3rem;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+        }
+
+        .leader-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-blue);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Filters styling */
+        .filter-section {
+            padding: 2.5rem 2rem;
+            background-color: var(--bg-light);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .filter-controls {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .filter-dropdown label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-charcoal);
+        }
+
+        .filter-select {
+            padding: 0.6rem 1rem;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            background-color: var(--bg-off);
+            color: var(--text-charcoal);
+            transition: all 0.2s ease;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        .filter-reset-btn {
+            padding: 0.6rem 1.25rem;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            background-color: var(--bg-light);
+            color: var(--text-charcoal);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-reset-btn:hover {
+            background-color: var(--accent-blue);
+            color: var(--white);
+            border-color: var(--accent-blue);
+        }
+
+        /* Staff Section styling */
+        .staff-section {
+            padding: 5rem 2rem;
+            background-color: var(--bg-off);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .staff-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .staff-card {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .staff-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-blue);
+            box-shadow: var(--shadow-md);
+        }
+
+        .staff-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background-color: var(--bg-off);
+            border-bottom: 1px solid var(--border-color);
+            object-fit: cover;
+        }
+
+        .staff-details {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            flex-grow: 1;
+        }
+
+        .staff-name {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            color: var(--accent-blue);
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .staff-designation {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-charcoal);
+            margin: 0;
+        }
+
+        .staff-subject, .staff-experience {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* Stats Section styling */
+        .stats-section {
+            padding: 5rem 2rem;
+            background-color: var(--bg-light);
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .stat-number {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 768px) {
+            .filter-controls {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Static Blue & Light Blue Mesh Background -->
+    <div class="bg-mesh-container">
+        <div class="mesh-blob mesh-blob-1"></div>
+        <div class="mesh-blob mesh-blob-2"></div>
+        <div class="mesh-blob mesh-blob-3"></div>
+        <div class="mesh-blob mesh-blob-4"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-section">
+                <img src="hcclogo.jpg" alt="HCC Logo" class="logo-img">
+                <div>
+                    <div class="school-name">HCC High School</div>
+                    <div class="school-location">Solapur</div>
+                </div>
+            </div>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="staff.html" class="active">Staff</a></li>
+                    <li><a href="admission.html">Admission</a></li>
+                    <li><a href="infrastructure.html">Infrastructure</a></li>
+                    <li><a href="gallery.html">Image Gallery</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="notices.html">Notices</a></li>
+                </ul>
+            </nav>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>Meet Our Exceptional Faculty</h1>
+        <p>Experienced educators dedicated to nurturing academic excellence, character development, and lifelong learning in every student</p>
+    </div>
+
+    <!-- Introduction Section -->
+    <section class="intro-section">
+        <h2>The Heart of Our Institution</h2>
+        <p>At HCC High School, we believe that great teachers create great futures. Our faculty represents the cornerstone of our educational philosophy, bringing together decades of combined teaching experience, advanced academic qualifications, and an unwavering commitment to student success. Each member of our team is carefully selected not just for their subject expertise, but for their ability to inspire curiosity, foster critical thinking, and create a nurturing learning environment where every student can thrive.</p>
+    </section>
+
+    <!-- Leadership Section -->
+    <section class="leadership-section">
+        <div class="leadership-container">
+            <h2 class="section-title">Our Leadership Team</h2>
+            <div class="leadership-grid">
+                <div class="leader-card" id="principalCard">
+    <!-- Will be loaded from Supabase -->
+</div>
+
+
+               <!-- <div class="leader-card" id="vicePrincipalCard">
+    
+</div> -->
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Buttons -->
+    <!-- Advanced Filter Section -->
+<div class="filter-section">
+    <div class="filter-controls">
+        <div class="filter-dropdown">
+            <label for="filterType">Filter By:</label>
+            <select id="filterType" class="filter-select">
+                <option value="all">All Staff</option>
+                <option value="subject">By Subject</option>
+                <option value="class">By Class</option>
+            </select>
+        </div>
+
+        <div class="filter-dropdown" id="subjectFilterContainer" style="display: none;">
+            <label for="subjectFilter">Select Subject:</label>
+            <select id="subjectFilter" class="filter-select">
+                <option value="">-- Select Subject --</option>
+            </select>
+        </div>
+
+        <div class="filter-dropdown" id="classFilterContainer" style="display: none;">
+            <label for="classFilter">Select Class:</label>
+            <select id="classFilter" class="filter-select">
+                <option value="">-- Select Class --</option>
+            </select>
+        </div>
+
+        <button class="filter-reset-btn" id="resetFilter">Reset Filters</button>
+    </div>
+</div>
+
+
+    <!-- Staff Grid -->
+    <section class="staff-section">
+        <div class="staff-grid" id="staffGrid">
+            <!-- Staff cards will be dynamically loaded from Supabase -->
+            <!-- Loading placeholder will show until data loads -->
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Expert Faculty Members</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">18</div>
+                <div class="stat-label">Average Years Experience</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">95%</div>
+                <div class="stat-label">Postgraduate Qualified</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Professionally Trained</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>HCC High School</h3>
+                <p>Excellence in education since 2000</p>
+                <p>Shaping young minds for a brighter tomorrow</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="about.html">About Us</a>
+                <a href="admission.html">Admissions</a>
+                <a href="staff.html">Faculty</a>
+                <a href="achievements.html">Achievements</a>
+            </div>
+
+            <div class="footer-section">
+    <h3>Contact Information</h3>
+
+    <!-- Address -->
+    <div class="footer-map-window">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3801.408602640286!2d75.91264877494157!3d17.67825598325992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc5da640306764d%3A0x6b447604473729e2!2sH.C.C.%20High%20School!5e0!3m2!1sen!2sin!4v1740193155106!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <!-- Address -->
+    <div class="contact-item ">
+        <a href="https://maps.app.goo.gl/4A8v38nVbPxUxZrM8" target="_blank" rel="noopener">
+            <span>Near St. Luke hospital, At Post Nannaj, North Solapur, Solapur- 413222</span>
+        </a>
+    </div>
+
+    <!-- Phone -->
+    <div class="contact-item">
+        <span class="contact-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6.62 10.79a15.53 15.53 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.07 21 3 13.93 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.59a1 1 0 0 1-.25 1.01l-2.2 2.19z"/>
+            </svg>
+        </span>
+        <a href="tel:+918625902920">+91 8625902920</a>
+    </div>
+
+    <!-- Instagram -->
+    <div class="contact-item">
+        <span class="contact-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.51 4.51 0 0 0 12 7.5zm0 7.3A2.8 2.8 0 1 1 14.8 12 2.81 2.81 0 0 1 12 14.8zM17.2 6.3a1.05 1.05 0 1 0 1.05 1.05 1.05 1.05 0 0 0-1.05-1.05z"/>
+            </svg>
+        </span>
+        <a href="https://www.instagram.com/hcc_high_school_/" target="_blank" rel="noopener">
+            @hcc_high_school_
+        </a>
+    </div>
+</div>
+
+
+            <div class="footer-section">
+                <h3>Notifications</h3>
+                <a href="javascript:void(0)" onclick="showNotificationSettings()">🔔 Notification Settings</a>
+                <p style="font-size: 0.85rem; color: var(--neutral-light); margin-top: 0.5rem;">
+                    Manage your notification preferences
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 HCC High School, Solapur. All rights reserved.</p>
+        </div>
+    </footer>
+
+        <!-- Supabase JS Library - Load ONCE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+   <script>
+    // ============================================
+    // SUPABASE CONFIGURATION
+    // ============================================
+    const SUPABASE_URL = 'https://yfrurcvidwuzrbgadwvt.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlmcnVyY3ZpZHd1enJiZ2Fkd3Z0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIzMDczMjYsImV4cCI6MjA5Nzg4MzMyNn0.V1n7yVj0xaqisekjhw_dzR8dewNuh84XEd0gd88rN1o';
+
+    const { createClient } = supabase;
+    const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // Global state
+    let allStaff = [];
+    let uniqueSubjects = new Set();
+    let uniqueClasses = new Set();
+
+    // ============================================
+    // LOAD STAFF DATA FROM SUPABASE
+    // ============================================
+    async function loadStaffData() {
+        try {
+            const { data: staff, error } = await supabaseClient
+                .from('staff')
+                .select('*')
+                .eq('is_visible', true)
+                .order('display_order', { ascending: true });
+
+            if (error) {
+                console.error('Error loading staff:', error);
+                showErrorMessage();
+                return;
+            }
+
+            if (staff && staff.length > 0) {
+                allStaff = staff;
+                extractFilters(staff);
+                populateFilterDropdowns();
+                renderStaffHierarchy(staff);
+            } else {
+                showEmptyState();
+            }
+        } catch (err) {
+            console.error('Failed to fetch staff:', err);
+            showErrorMessage();
+        }
+    }
+
+    // ============================================
+    // EXTRACT UNIQUE SUBJECTS AND CLASSES
+    // ============================================
+    function extractFilters(staffData) {
+        uniqueSubjects.clear();
+        uniqueClasses.clear();
+
+        staffData.forEach(member => {
+            if (member.subject) {
+                uniqueSubjects.add(member.subject);
+            }
+            if (member.class_taught) {
+                // Split by comma and clean each class
+                const classes = member.class_taught
+                    .split(',')
+                    .map(c => c.trim())
+                    .map(c => {
+                        // Remove "Class" prefix if exists
+                        c = c.replace(/class\s*/gi, '');
+                        // Ensure "th" suffix
+                        if (!c.match(/th|st|nd|rd$/i)) {
+                            c += 'th';
+                        }
+                        return c;
+                    });
+                
+                classes.forEach(c => uniqueClasses.add(c));
+            }
+        });
+    }
+
+    // ============================================
+    // POPULATE FILTER DROPDOWNS
+    // ============================================
+    function populateFilterDropdowns() {
+    const subjectFilter = document.getElementById('subjectFilter');
+    const classFilter = document.getElementById('classFilter');
+
+    // Clear existing options
+    subjectFilter.innerHTML = '<option value="">-- All Subjects --</option>';
+    classFilter.innerHTML = '<option value="">-- All Classes --</option>';
+
+    // Add subject options (alphabetically sorted)
+    Array.from(uniqueSubjects).sort().forEach(subject => {
+        const option = document.createElement('option');
+        option.value = subject;
+        option.textContent = subject;
+        subjectFilter.appendChild(option);
+    });
+
+    // Add class options (sorted numerically with null check)
+    Array.from(uniqueClasses)
+        .filter(c => c && c.trim() !== '') // Remove empty values
+        .sort((a, b) => {
+            // Extract number from "9th" -> 9
+            const matchA = a.match(/\d+/);
+            const matchB = b.match(/\d+/);
+            
+            // If no number found, put at end
+            if (!matchA) return 1;
+            if (!matchB) return -1;
+            
+            const numA = parseInt(matchA[0]);
+            const numB = parseInt(matchB[0]);
+            return numA - numB;
+        })
+        .forEach(className => {
+            const option = document.createElement('option');
+            option.value = className;
+            option.textContent = className;
+            classFilter.appendChild(option);
+        });
+}
+
+    // ============================================
+    // RENDER STAFF HIERARCHY (PRINCIPAL FIRST, THEN OTHERS)
+    // ============================================
+    function renderStaffHierarchy(staffData) {
+        const staffGrid = document.getElementById('staffGrid');
+        staffGrid.innerHTML = '';
+
+        // Separate leadership from regular staff
+        const principal = staffData.find(member => 
+            member.designation && member.designation.toLowerCase() === 'principal'
+        );
+        
+        const vicePrincipal = staffData.find(member => 
+            member.designation && member.designation.toLowerCase() === 'vice principal'
+        );
+
+        const regularStaff = staffData.filter(member => 
+            member !== principal && member !== vicePrincipal
+        );
+
+        // Load leadership into dedicated cards in HTML
+        if (principal) {
+            loadLeadershipCard('principalCard', principal);
+        }
+        if (vicePrincipal) {
+            loadLeadershipCard('vicePrincipalCard', vicePrincipal);
+        }
+
+        // Render Regular Staff Section
+        if (regularStaff.length > 0) {
+            const staffHeader = document.createElement('h3');
+            staffHeader.className = 'staff-section-header';
+            staffHeader.textContent = 'Faculty Members';
+            staffGrid.appendChild(staffHeader);
+
+            regularStaff.forEach(member => {
+                const card = createStaffCard(member);
+                staffGrid.appendChild(card);
+            });
+
+            // GSAP ScrollTrigger stagger entrance animations
+            setTimeout(() => {
+                if (window.gsap && window.ScrollTrigger) {
+                    ScrollTrigger.getAll().forEach(trigger => {
+                        if (trigger.vars.trigger && trigger.vars.trigger.toString().includes('staffGrid')) {
+                            trigger.kill();
+                        }
+                    });
+
+                    gsap.from('.staff-card', {
+                        scrollTrigger: {
+                            trigger: '#staffGrid',
+                            start: 'top 85%',
+                        },
+                        y: 40,
+                        opacity: 0,
+                        duration: 0.8,
+                        stagger: 0.05,
+                        ease: 'power3.out'
+                    });
+                }
+            }, 50);
+        } else {
+            // Show empty state if no regular staff match filters
+            const emptyMessage = document.createElement('div');
+            emptyMessage.style.cssText = 'grid-column: 1 / -1; text-align: center; padding: 4rem 2rem;';
+            emptyMessage.innerHTML = `
+                <h3 style="font-size: 1.5rem; color: var(--neutral-warm); margin-bottom: 1rem;">
+                    No staff members found for this filter
+                </h3>
+                <p style="color: var(--neutral-warm);">
+                    Try selecting a different option or reset filters.
+                </p>
+            `;
+            staffGrid.appendChild(emptyMessage);
+        }
+    }
+
+    // ============================================
+    // LOAD LEADERSHIP CARD (PRINCIPAL/VP)
+    // ============================================
+    function loadLeadershipCard(cardId, member) {
+        const card = document.getElementById(cardId);
+        if (!card) return;
+
+        card.innerHTML = `
+            <div class="leader-image-container" style="background: linear-gradient(135deg, var(--accent-blue-trans), rgba(37, 99, 235, 0.05)); display: flex; align-items: center; justify-content: center; width: 140px; height: 140px; border-radius: 50%; margin: 0 auto 1.5rem; overflow: hidden; font-size: 2.5rem; font-weight: bold; color: var(--accent-blue); border: 3px solid var(--accent-blue);">
+                ${member.image_url ? 
+                    `<img src="${member.image_url}" alt="${member.full_name}" style="width: 100%; height: 100%; object-fit: cover;">` :
+                    `<span class="leader-initial">${member.full_name.charAt(0)}</span>`
+                }
+            </div>
+            <h3 class="leader-name">${member.full_name}</h3>
+            <p class="leader-title">${member.designation}</p>
+            <p class="leader-bio">${member.bio || 'Dedicated educational leader committed to excellence.'}</p>
+        `;
+    }
+
+    // ============================================
+    // CREATE INDIVIDUAL STAFF CARD
+    // ============================================
+    function createStaffCard(member) {
+        const card = document.createElement('div');
+        card.className = 'staff-card';
+        card.setAttribute('data-subject', member.subject || '');
+        card.setAttribute('data-class', member.class_taught || '');
+
+        const formattedClasses = formatClasses(member.class_taught);
+
+        card.innerHTML = `
+            <div class="staff-image-container" style="background: linear-gradient(135deg, var(--accent-blue-trans), rgba(37, 99, 235, 0.05)); display: flex; align-items: center; justify-content: center; height: 180px; font-size: 3rem; font-weight: bold; color: var(--accent-blue);">
+                ${member.image_url ? 
+                    `<img src="${member.image_url}" alt="${member.full_name}" style="width: 100%; height: 100%; object-fit: cover;">` :
+                    `<span class="staff-initial">${member.full_name.charAt(0)}</span>`
+                }
+            </div>
+            <div class="staff-details">
+                <h3 class="staff-name">${member.full_name}</h3>
+                <p class="staff-designation">${member.designation || 'Faculty Member'}</p>
+                ${member.subject ? `<p class="staff-subject"><strong>Subject:</strong> ${member.subject}</p>` : ''}
+                ${formattedClasses ? `<p class="staff-experience"><strong>Classes:</strong> ${formattedClasses}</p>` : ''}
+            </div>
+        `;
+
+        return card;
+    }
+
+    // ============================================
+    // FORMAT CLASSES (9th, 10th instead of Class 9)
+    // ============================================
+    function formatClasses(classString) {
+        if (!classString) return '';
+        
+        // Split by comma and format each
+        return classString
+            .split(',')
+            .map(c => c.trim())
+            .map(c => {
+                // Remove "Class" prefix if exists
+                c = c.replace(/class\s*/gi, '');
+                // Add "th" suffix if not present
+                if (!c.match(/th|st|nd|rd$/i)) {
+                    c += 'th';
+                }
+                return c;
+            })
+            .join(', ');
+    }
+
+    // ============================================
+    // EMPTY STATE & ERROR HANDLING
+    // ============================================
+    function showEmptyState() {
+        const staffGrid = document.getElementById('staffGrid');
+        staffGrid.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 2rem;">
+                <h3 style="font-size: 1.5rem; color: var(--neutral-warm); margin-bottom: 1rem;">
+                    No staff members found
+                </h3>
+                <p style="color: var(--neutral-warm);">
+                    Staff information will be updated soon.
+                </p>
+            </div>
+        `;
+    }
+
+    function showErrorMessage() {
+        const staffGrid = document.getElementById('staffGrid');
+        staffGrid.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 2rem;">
+                <h3 style="font-size: 1.5rem; color: var(--maroon-primary); margin-bottom: 1rem;">
+                    Unable to load staff information
+                </h3>
+                <p style="color: var(--neutral-warm); margin-bottom: 1.5rem;">
+                    Please check your internet connection and try again.
+                </p>
+                <button onclick="loadStaffData()" 
+                        style="padding: 0.8rem 2rem; background: var(--maroon-primary); 
+                               color: white; border: none; border-radius: 8px; cursor: pointer; 
+                               font-size: 1rem; font-weight: 600;">
+                    Retry
+                </button>
+            </div>
+        `;
+    }
+
+    // ============================================
+    // FILTER FUNCTIONALITY
+    // ============================================
+    const filterType = document.getElementById('filterType');
+    const subjectFilterContainer = document.getElementById('subjectFilterContainer');
+    const classFilterContainer = document.getElementById('classFilterContainer');
+    const subjectFilter = document.getElementById('subjectFilter');
+    const classFilter = document.getElementById('classFilter');
+    const resetFilterBtn = document.getElementById('resetFilter');
+
+    // Show/hide filter dropdowns based on selection
+    filterType.addEventListener('change', (e) => {
+        const selected = e.target.value;
+
+        subjectFilterContainer.style.display = 'none';
+        classFilterContainer.style.display = 'none';
+
+        if (selected === 'subject') {
+            subjectFilterContainer.style.display = 'flex';
+        } else if (selected === 'class') {
+            classFilterContainer.style.display = 'flex';
+        }
+
+        // Reset filters
+        subjectFilter.value = '';
+        classFilter.value = '';
+        applyFilters();
+    });
+
+    // Apply subject filter
+    subjectFilter.addEventListener('change', applyFilters);
+
+    // Apply class filter
+    classFilter.addEventListener('change', applyFilters);
+
+    // Reset filters
+    resetFilterBtn.addEventListener('click', () => {
+        filterType.value = 'all';
+        subjectFilter.value = '';
+        classFilter.value = '';
+        subjectFilterContainer.style.display = 'none';
+        classFilterContainer.style.display = 'none';
+        applyFilters();
+    });
+
+    // ============================================
+    // APPLY FILTERS
+    // ============================================
+    function applyFilters() {
+        const filterMode = filterType.value;
+        const selectedSubject = subjectFilter.value;
+        const selectedClass = classFilter.value;
+
+        // Exclude Principal and VP from regular staff display
+        let filteredStaff = allStaff.filter(member => 
+            member.designation && 
+            member.designation.toLowerCase() !== 'principal' && 
+            member.designation.toLowerCase() !== 'vice principal'
+        );
+
+        // Apply subject filter
+        if (filterMode === 'subject' && selectedSubject) {
+            filteredStaff = filteredStaff.filter(member => 
+                member.subject === selectedSubject
+            );
+        } 
+        // Apply class filter
+        else if (filterMode === 'class' && selectedClass) {
+            filteredStaff = filteredStaff.filter(member => {
+                if (!member.class_taught) return false;
+                
+                // Split and normalize classes
+                const classes = member.class_taught
+                    .split(',')
+                    .map(c => c.trim())
+                    .map(c => {
+                        // Remove "Class" prefix if exists
+                        c = c.replace(/class\s*/gi, '');
+                        // Ensure "th" suffix
+                        if (!c.match(/th|st|nd|rd$/i)) {
+                            c += 'th';
+                        }
+                        return c;
+                    });
+                
+                // Check if selected class matches any of the staff's classes
+                return classes.includes(selectedClass);
+            });
+        }
+
+        // Re-render with filtered staff
+        renderStaffHierarchy(filteredStaff);
+    }
+
+    // ============================================
+    // MOBILE MENU & HEADER SCROLL
+    // ============================================
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.querySelector('nav');
+    const navLinks = document.querySelectorAll('nav ul li a');
+
+    if (hamburger && nav) {
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (nav.classList.contains('active') && !nav.contains(e.target) && e.target !== hamburger) {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+            }
+        });
+    }
+
+    let lastScroll = 0;
+    const header = document.querySelector('header');
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll <= 0) {
+            header.style.transform = 'translateY(0)';
+            return;
+        }
+        
+        if (currentScroll > lastScroll && currentScroll > 80) {
+            header.style.transform = 'translateY(-100%)';
+        } else {
+            header.style.transform = 'translateY(0)';
+        }
+        
+        lastScroll = currentScroll;
+    });
+
+    // ============================================
+    // INITIALIZE
+    // ============================================
+    window.addEventListener('DOMContentLoaded', () => {
+        loadStaffData();
+
+        // Initialize Lucide Icons
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+
+        // GSAP Page Entrance
+        if (window.gsap) {
+            const headerTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+            headerTl.from('header', { y: -50, opacity: 0, duration: 1 })
+                    .from('.page-header h1', { y: 30, opacity: 0, duration: 0.8 }, '-=0.6')
+                    .from('.page-header p', { y: 20, opacity: 0, duration: 0.8 }, '-=0.6')
+                    .from('.intro-section', { y: 20, opacity: 0, duration: 0.8 }, '-=0.6')
+                    .from('.leadership-section', { y: 20, opacity: 0, duration: 0.8 }, '-=0.6')
+                    .from('.filter-section', { y: 20, opacity: 0, duration: 0.8 }, '-=0.6');
+        }
+    });
+</script>
+
+</body>
+</html>
+

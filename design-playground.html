@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HCC UI Design Concepts Playground</title>
+    
+    <!-- Import Google Fonts for all 10 design concepts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;600&family=Cinzel:wght@700&family=Cormorant+Garamond:ital,wght@0,600;1,600&family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&family=Fira+Code&family=Hanken+Grotesk:wght@500;800&family=Inter:wght@400;600;800&family=JetBrains+Mono&family=Lexend:wght@400;700&family=Lora:ital,wght@0,600;1,600&family=Montserrat:wght@400;600&family=Outfit:wght@400;700&family=Playfair+Display:wght@700&family=Roboto:wght@400;500&family=Space+Grotesk:wght@400;700&display=swap">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* General Playground Layout Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .playground-header {
+            background: #1e293b;
+            border: 1px solid #334155;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .playground-header h1 {
+            font-size: 2.2rem;
+            color: #f8fafc;
+            margin-bottom: 0.5rem;
+        }
+
+        .playground-header p {
+            font-size: 1rem;
+            color: #94a3b8;
+            max-width: 800px;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        /* 10 Switcher Buttons Grid */
+        .switcher-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .switcher-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 640px) {
+            .switcher-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .switch-btn {
+            background: #334155;
+            color: #f1f5f9;
+            border: 1px solid #475569;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .switch-btn:hover {
+            background: #475569;
+            border-color: #64748b;
+        }
+
+        .switch-btn.active {
+            background: #2563eb;
+            border-color: #3b82f6;
+            box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+        }
+
+        .switch-btn span.concept-num {
+            font-size: 0.7rem;
+            opacity: 0.65;
+            text-transform: uppercase;
+        }
+
+        .switch-btn span.concept-name {
+            font-size: 0.9rem;
+        }
+
+        /* Active Concept Details Info Row */
+        .concept-details-bar {
+            background: #1e293b;
+            border: 1px solid #334155;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            color: #94a3b8;
+            justify-content: center;
+        }
+
+        .detail-item strong {
+            color: #f1f5f9;
+        }
+
+        /* ==========================================================================
+           MOCK FRONT PAGE STYLING CONTAINER (THEMES SYSTEM)
+           ========================================================================== */
+        .preview-wrapper {
+            background-color: var(--theme-bg);
+            color: var(--theme-text);
+            font-family: var(--theme-font-body);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border: 1px solid var(--theme-border);
+            transition: background-color 0.4s ease, color 0.4s ease;
+            min-height: 800px;
+        }
+
+        /* 1. Japandi Zen variables */
+        .theme-japandi {
+            --theme-bg: #fdfbf7;
+            --theme-card-bg: #eae6df;
+            --theme-text: #1e1e1e;
+            --theme-text-muted: #5a5a5a;
+            --theme-accent: #b06c59;
+            --theme-border: #d4cdc5;
+            --theme-font-title: 'Cormorant Garamond', Georgia, serif;
+            --theme-font-body: 'Inter', sans-serif;
+            --theme-radius: 4px;
+            --theme-shadow: none;
+            --theme-border-style: 1px solid var(--theme-border);
+            --theme-header-bg: rgba(253, 251, 247, 0.9);
+        }
+
+        /* 2. Titanium Slate variables */
+        .theme-titanium {
+            --theme-bg: #f0f2f5;
+            --theme-card-bg: #ffffff;
+            --theme-text: #1f2937;
+            --theme-text-muted: #4b5563;
+            --theme-accent: #475569;
+            --theme-border: #d1d5db;
+            --theme-font-title: 'Outfit', sans-serif;
+            --theme-font-body: 'Outfit', sans-serif;
+            --theme-radius: 0px;
+            --theme-shadow: 4px 4px 0px #475569;
+            --theme-border-style: 2px solid var(--theme-border);
+            --theme-header-bg: rgba(240, 242, 245, 0.95);
+        }
+
+        /* 3. Obsidian Brass variables */
+        .theme-obsidian {
+            --theme-bg: #121318;
+            --theme-card-bg: rgba(255, 255, 255, 0.03);
+            --theme-text: #e4e6eb;
+            --theme-text-muted: #a0a5b5;
+            --theme-accent: #cfa87b;
+            --theme-border: rgba(255, 255, 255, 0.08);
+            --theme-font-title: 'Playfair Display', serif;
+            --theme-font-body: 'Montserrat', sans-serif;
+            --theme-radius: 12px;
+            --theme-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            --theme-border-style: 1px solid var(--theme-border);
+            --theme-header-bg: rgba(18, 19, 24, 0.9);
+        }
+
+        /* 4. Bauhaus Grid variables */
+        .theme-bauhaus {
+            --theme-bg: #fafafa;
+            --theme-card-bg: #ffffff;
+            --theme-text: #111111;
+            --theme-text-muted: #555555;
+            --theme-accent: #a93c3c;
+            --theme-border: #111111;
+            --theme-font-title: 'Space Grotesk', sans-serif;
+            --theme-font-body: 'Space Grotesk', sans-serif;
+            --theme-radius: 0px;
+            --theme-shadow: none;
+            --theme-border-style: 1px solid var(--theme-border);
+            --theme-header-bg: #fafafa;
+        }
+
+        /* 5. Mist & Eucalyptus variables */
+        .theme-mist {
+            --theme-bg: #f4f7f6;
+            --theme-card-bg: #ffffff;
+            --theme-text: #2c3539;
+            --theme-text-muted: #5e6d62;
+            --theme-accent: #778a7c;
+            --theme-border: #e1e8e5;
+            --theme-font-title: 'Lora', serif;
+            --theme-font-body: 'Cabin', sans-serif;
+            --theme-radius: 16px;
+            --theme-shadow: 0 4px 20px rgba(119, 138, 124, 0.08);
+            --theme-border-style: 1px solid var(--theme-border);
+            --theme-header-bg: rgba(244, 247, 246, 0.9);
+        }
+
+        /* 6. Alabaster Paper variables */
+        .theme-alabaster {
+            --theme-bg: #faf8f5;
+            --theme-card-bg: #ffffff;
+            --theme-text: #1c1d1f;
+            --theme-text-muted: #6b665c;
+            --theme-accent: #1c1d1f;
+            --theme-border: #e8e4dc;
+            --theme-font-title: 'Cinzel', Georgia, serif;
+            --theme-font-body: 'Roboto', sans-serif;
+            --theme-radius: 2px;
+            --theme-shadow: none;
+            --theme-border-style: 1px solid var(--theme-border);
+            --theme-header-bg: #faf8f5;
+        }
+
+        /* 7. Cyber-Outline variables */
+        .theme-cyber {
+            --theme-bg: #0c0d0e;
+            --theme-card-bg: #0c0d0e;
+            --theme-text: #ffffff;
+            --theme-text-muted: #8a8d91;
+            --theme-accent: #2563eb;
+            --theme-border: #25272a;
+            --theme-font-title: 'Fira Code', monospace;
+            --theme-font-body: 'Inter', sans-serif;
+            --theme-radius: 4px;
+            --theme-shadow: 0 0 10px rgba(37, 99, 235, 0.15);
+            --theme-border-style: 1px solid var(--theme-border);
+            --theme-header-bg: rgba(12, 13, 14, 0.95);
+        }
+
+        /* 8. Arctic Minimal variables */
+        .theme-arctic {
+            --theme-bg: #fcfdfe;
+            --theme-card-bg: rgba(255, 255, 255, 0.7);
+            --theme-text: #475569;
+            --theme-text-muted: #64748b;
+            --theme-accent: #818cf8;
+            --theme-border: rgba(226, 232, 240, 0.8);
+            --theme-font-title: 'Lexend', sans-serif;
+            --theme-font-body: 'Outfit', sans-serif;
+            --theme-radius: 24px;
+            --theme-shadow: 0 8px 32px rgba(31, 38, 135, 0.04);
+            --theme-border-style: 1px solid var(--theme-border);
+            --theme-header-bg: rgba(252, 253, 254, 0.8);
+        }
+
+        /* 9. Terracotta Dusk variables */
+        .theme-terracotta {
+            --theme-bg: #3e2a24;
+            --theme-card-bg: #eae0d5;
+            --theme-text: #1a0f0d;
+            --theme-text-muted: #5c4d4a;
+            --theme-accent: #d8c3a5;
+            --theme-border: #eae0d5;
+            --theme-font-title: 'DM Serif Display', serif;
+            --theme-font-body: 'DM Sans', sans-serif;
+            --theme-radius: 12px;
+            --theme-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            --theme-border-style: 1px solid var(--theme-border);
+            --theme-header-bg: #3e2a24;
+        }
+
+        /* 10. Swiss Neo-Minimal variables */
+        .theme-swiss {
+            --theme-bg: #f3f4f6;
+            --theme-card-bg: #ffffff;
+            --theme-text: #111827;
+            --theme-text-muted: #4b5563;
+            --theme-accent: #ef4444;
+            --theme-border: #e5e7eb;
+            --theme-font-title: 'Inter', sans-serif;
+            --theme-font-body: 'Inter', sans-serif;
+            --theme-radius: 0px;
+            --theme-shadow: none;
+            --theme-border-style: 1px solid var(--theme-border);
+            --theme-header-bg: #f3f4f6;
+        }
+
+        /* ==========================================================================
+           INNER COMPONENTS STYLING
+           ========================================================================== */
+        
+        /* 1. Header Navigation */
+        .preview-header {
+            background-color: var(--theme-header-bg);
+            border-bottom: var(--theme-border-style);
+            padding: 1.2rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .preview-logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .preview-logo-box {
+            width: 36px;
+            height: 36px;
+            background: var(--theme-accent);
+            border-radius: var(--theme-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .preview-logo-text {
+            font-family: var(--theme-font-title);
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .preview-nav {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .preview-nav li a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .preview-nav li a.active {
+            color: var(--theme-accent);
+        }
+
+        .preview-btn-cta {
+            background: var(--theme-accent);
+            color: #ffffff;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--theme-radius);
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            box-shadow: var(--theme-shadow);
+        }
+
+        /* 2. Hero banner Layout */
+        .preview-hero {
+            padding: 6rem 2.5rem;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+            border-bottom: var(--theme-border-style);
+        }
+
+        @media (max-width: 768px) {
+            .preview-hero {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        .preview-hero-text h1 {
+            font-family: var(--theme-font-title);
+            font-size: 3.2rem;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            color: var(--theme-accent);
+        }
+
+        .preview-hero-text p {
+            font-size: 1.1rem;
+            color: var(--theme-text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .preview-cta-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .preview-btn-primary {
+            background: var(--theme-accent);
+            color: #ffffff;
+            border: none;
+            padding: 0.9rem 1.8rem;
+            border-radius: var(--theme-radius);
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            box-shadow: var(--theme-shadow);
+            transition: transform 0.2s ease;
+        }
+
+        .preview-btn-primary:hover {
+            transform: translateY(-1px);
+        }
+
+        .preview-btn-secondary {
+            background: transparent;
+            color: var(--theme-text);
+            border: var(--theme-border-style);
+            padding: 0.9rem 1.8rem;
+            border-radius: var(--theme-radius);
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .preview-hero-image-box {
+            border-radius: var(--theme-radius);
+            overflow: hidden;
+            border: var(--theme-border-style);
+            box-shadow: var(--theme-shadow);
+            aspect-ratio: 4 / 3;
+            background: var(--theme-card-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* 3. Highlights Bento grid Section */
+        .preview-highlights {
+            padding: 5rem 2.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .preview-highlights {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        .preview-highlights h2 {
+            font-family: var(--theme-font-title);
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .preview-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .preview-card {
+            background: var(--theme-card-bg);
+            border: var(--theme-border-style);
+            border-radius: var(--theme-radius);
+            padding: 2.5rem 2rem;
+            box-shadow: var(--theme-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .preview-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .preview-card-icon {
+            color: var(--theme-accent);
+            width: 36px;
+            height: 36px;
+            margin-bottom: 1.5rem;
+            stroke-width: 1.5;
+        }
+
+        .preview-card h3 {
+            font-family: var(--theme-font-title);
+            font-size: 1.35rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .preview-card p {
+            font-size: 0.95rem;
+            color: var(--theme-text-muted);
+            line-height: 1.65;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Description panel -->
+    <div class="playground-header">
+        <h1>HCC Front Page Design Theme Sandbox</h1>
+        <p>Switch between the 10 custom designs from our design proposal. This mock rendering template inherits layouts, typography scopes (serif, geometric sans, monospace), color systems, custom border styles, and radius offsets dynamically.</p>
+        
+        <!-- Theme Switcher Grid -->
+        <div class="switcher-grid">
+            <button class="switch-btn active" onclick="setTheme(this, 'japandi')">
+                <span class="concept-num">Concept 01</span>
+                <span class="concept-name">Japandi Zen</span>
+            </button>
+            <button class="switch-btn" onclick="setTheme(this, 'titanium')">
+                <span class="concept-num">Concept 02</span>
+                <span class="concept-name">Titanium Slate</span>
+            </button>
+            <button class="switch-btn" onclick="setTheme(this, 'obsidian')">
+                <span class="concept-num">Concept 03</span>
+                <span class="concept-name">Obsidian & Brass</span>
+            </button>
+            <button class="switch-btn" onclick="setTheme(this, 'bauhaus')">
+                <span class="concept-num">Concept 04</span>
+                <span class="concept-name">Bauhaus Grid</span>
+            </button>
+            <button class="switch-btn" onclick="setTheme(this, 'mist')">
+                <span class="concept-num">Concept 05</span>
+                <span class="concept-name">Mist & Eucalyptus</span>
+            </button>
+            <button class="switch-btn" onclick="setTheme(this, 'alabaster')">
+                <span class="concept-num">Concept 06</span>
+                <span class="concept-name">Alabaster Paper</span>
+            </button>
+            <button class="switch-btn" onclick="setTheme(this, 'cyber')">
+                <span class="concept-num">Concept 07</span>
+                <span class="concept-name">Cyber-Outline</span>
+            </button>
+            <button class="switch-btn" onclick="setTheme(this, 'arctic')">
+                <span class="concept-num">Concept 08</span>
+                <span class="concept-name">Arctic Minimal</span>
+            </button>
+            <button class="switch-btn" onclick="setTheme(this, 'terracotta')">
+                <span class="concept-num">Concept 09</span>
+                <span class="concept-name">Terracotta Dusk</span>
+            </button>
+            <button class="switch-btn" onclick="setTheme(this, 'swiss')">
+                <span class="concept-num">Concept 10</span>
+                <span class="concept-name">Swiss Neo-Minimal</span>
+            </button>
+        </div>
+
+        <!-- Concept Details Description -->
+        <div class="concept-details-bar" id="detailsBar">
+            <div class="detail-item">Palette: <strong id="detPalette">Warm alabaster (#fdfbf7), sand grey, deep clay-rust (#b06c59)</strong></div>
+            <div class="detail-item">Typography: <strong id="detFonts">Cormorant Garamond & Inter</strong></div>
+            <div class="detail-item">Design Mood: <strong id="detMood">Quiet organic, scholastic architecture magazine editorial</strong></div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         LIVE FRONT PAGE DEMO BLOCK CONTROLLER
+         ========================================================================== */ -->
+    <div class="preview-wrapper theme-japandi" id="previewContainer">
+        
+        <!-- Live Header Navigation -->
+        <header class="preview-header">
+            <div class="preview-logo-section">
+                <div class="preview-logo-box">H</div>
+                <div>
+                    <div class="preview-logo-text">HCC High School</div>
+                </div>
+            </div>
+            <ul class="preview-nav">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Admission</a></li>
+                <li><a href="#">Faculty</a></li>
+            </ul>
+            <button class="preview-btn-cta">Admissions Open</button>
+        </header>
+
+        <!-- Live Hero Block -->
+        <section class="preview-hero">
+            <div class="preview-hero-text">
+                <h1>Excellence in Scholastic Education</h1>
+                <p>Nurturing young minds, strengthening ethical character, and inspiring academic benchmarks for a successful future in Solapur, Maharashtra.</p>
+                <div class="preview-cta-row">
+                    <button class="preview-btn-primary">Apply Online</button>
+                    <button class="preview-btn-secondary">Read Prospectus</button>
+                </div>
+            </div>
+            <div class="preview-hero-image-box">
+                <div style="text-align: center; opacity: 0.8; font-size: 0.9rem;">
+                    <i data-lucide="image" style="width: 48px; height: 48px; margin: 0 auto 0.5rem; stroke-width: 1.2;"></i>
+                    <p>[ Campus Facade Media Preview ]</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Highlights Section -->
+        <section class="preview-highlights">
+            <h2>Why Choose HCC High School</h2>
+            <div class="preview-grid">
+                <div class="preview-card">
+                    <i data-lucide="users" class="preview-card-icon"></i>
+                    <h3>Expert Faculty</h3>
+                    <p>Highly qualified and certified educators dedicated to student progress and overall leadership mentorship.</p>
+                </div>
+                <div class="preview-card">
+                    <i data-lucide="school" class="preview-card-icon"></i>
+                    <h3>Modern Classrooms</h3>
+                    <p>Advanced digital boards, computer centers, and practical experiment laboratories built to help students learn.</p>
+                </div>
+                <div class="preview-card">
+                    <i data-lucide="award" class="preview-card-icon"></i>
+                    <h3>Benchmarked Results</h3>
+                    <p>Consistent track records of outstanding board marks and achievements across extracurricular state meets.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Setup Script -->
+    <script>
+        // Details list for all 10 concepts
+        const concepts = {
+            japandi: {
+                className: 'theme-japandi',
+                palette: 'Warm alabaster (#fdfbf7), sand grey, deep clay-rust (#b06c59)',
+                fonts: 'Cormorant Garamond (Title) & Inter (Body)',
+                mood: 'Quiet organic, scholastic architecture magazine editorial'
+            },
+            titanium: {
+                className: 'theme-titanium',
+                palette: 'Matte slate-grey (#f0f2f5), pure white, cold titanium (#475569)',
+                fonts: 'Outfit (Title & Body) with monospaced accents',
+                mood: 'Engineered, clean modular blocks, solid drop shadows'
+            },
+            obsidian: {
+                className: 'theme-obsidian',
+                palette: 'Deep obsidian (#121318), soft brass-gold (#cfa87b), cream text',
+                fonts: 'Playfair Display (Title) & Montserrat (Body)',
+                mood: 'Premium muted luxury dark mode layout'
+            },
+            bauhaus: {
+                className: 'theme-bauhaus',
+                palette: 'Off-white (#fafafa), black structural lines (#111111), rust red (#a93c3c)',
+                fonts: 'Space Grotesk (Title & Body)',
+                mood: 'Bold modernist gridlines, primary color accents'
+            },
+            mist: {
+                className: 'theme-mist',
+                palette: 'Mist-grey-blue (#f4f7f6), eucalyptus green (#778a7c)',
+                fonts: 'Lora (Title) & Cabin (Body)',
+                mood: 'Organic wellness, human-centered and calm layouts'
+            },
+            alabaster: {
+                className: 'theme-alabaster',
+                palette: 'Parchment off-white (#faf8f5), coal black (#1c1d1f)',
+                fonts: 'Cinzel (Title) & Roboto (Body)',
+                mood: 'Traditional editorial paper page, intellectual look'
+            },
+            cyber: {
+                className: 'theme-cyber',
+                palette: 'Dark mode black (#0c0d0e), thin grid lines (#25272a), royal blue (#2563eb)',
+                fonts: 'Fira Code (Title) & Inter (Body)',
+                mood: 'Futuristic technical panel interface, high-contrast glow'
+            },
+            arctic: {
+                className: 'theme-arctic',
+                palette: 'Snow white (#fcfdfe), translucent blurs, soft silver-indigo (#818cf8)',
+                fonts: 'Lexend (Title) & Outfit (Body)',
+                mood: 'Spacious glassmorphism, glowing crystalline layers'
+            },
+            terracotta: {
+                className: 'theme-terracotta',
+                palette: 'Deep terracotta brown (#3e2a24), warm beige (#eae0d5), sand accents',
+                fonts: 'DM Serif Display (Title) & DM Sans (Body)',
+                mood: 'Earthy warmth, organic clay-colored layout panels'
+            },
+            swiss: {
+                className: 'theme-swiss',
+                palette: 'Flat grey (#f3f4f6), bold dark grey (#111827), pure primary red (#ef4444)',
+                fonts: 'Inter (Heavy Bold Titles & Sans-serif Body)',
+                mood: 'Minimalist Swiss design, bold typography as visual decoration'
+            }
+        };
+
+        // Theme switching handler
+        function setTheme(btn, key) {
+            // Remove active class from buttons
+            document.querySelectorAll('.switch-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Apply selected theme class to mock preview wrapper
+            const container = document.getElementById('previewContainer');
+            const data = concepts[key];
+            
+            // Reset theme classes
+            container.className = 'preview-wrapper';
+            container.classList.add(data.className);
+
+            // Update details bar info
+            document.getElementById('detPalette').textContent = data.palette;
+            document.getElementById('detFonts').textContent = data.fonts;
+            document.getElementById('detMood').textContent = data.mood;
+
+            // Re-trigger icon rendering if needed
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        }
+
+        // Initialize Lucide Icons
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        });
+    </script>
+</body>
+</html>

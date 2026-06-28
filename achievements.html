@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover HCC High School's achievements and awards in academics, sports, cultural events, and more.">
+    <meta name="keywords" content="HCC High School Achievements, School Awards, Academic Excellence, Solapur School">
+    <meta name="theme-color" content="#0f172a">
+
+    <!-- SEO Meta Tags - ADD THESE -->
+  <meta name="description" content="HCC High School and Junior College Solapur - Hindustan Covenant Church School providing quality education in Solapur, Maharashtra">
+  <meta name="keywords" content="HCC High School, Solapur school, Hindustan Covenant Church, Junior College Solapur, education Solapur">
+  <meta name="author" content="HCC High School Solapur">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph Tags - ADD THESE -->
+  <meta property="og:title" content="HCC High School Solapur">
+  <meta property="og:description" content="Hindustan Covenant Church High School and Junior College, Solapur">
+  <meta property="og:image" content="https://hccsolapur.in/hcclogo.jpg">
+  <meta property="og:url" content="https://hccsolapur.in">
+  <meta property="og:type" content="website">
+  
+  <!-- Canonical URL - ADD THIS (change URL for each page) -->
+  <link rel="canonical" href="https://hccsolapur.in/achievements.html">
+  
+  <!-- Schema Markup - ADD THIS -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HighSchool",
+    "name": "Hindustan Covenant Church High School and Junior College",
+    "alternateName": "HCC High School Solapur",
+    "url": "https://hccsolapur.in",
+    "logo": "https://hccsolapur.in/hcclogo.jpg",
+    "image": "https://hccsolapur.in/hcc.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Solapur",
+      "addressRegion": "Maharashtra",
+      "addressCountry": "IN"
+    }
+  }
+  </script>
+    <title>Achievements & Awards | HCC High School, Solapur</title>
+    
+    <!-- Global Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Lucide Icons Vector Library -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- GSAP Animations & ScrollTrigger CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        /* Page Header */
+        .page-header {
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+            background-color: var(--bg-light);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .page-header h1 {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Stats styling */
+        .stats-section {
+            padding: 4rem 2rem 2rem;
+            background-color: var(--bg-light);
+        }
+
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            background-color: var(--bg-off);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-blue);
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-icon {
+            color: var(--accent-blue);
+            width: 28px;
+            height: 28px;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-serif);
+            font-size: 2.75rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        /* Filter styling */
+        .filter-section {
+            padding: 2rem 2rem;
+            background-color: var(--bg-light);
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.25rem;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            background-color: var(--bg-light);
+            color: var(--text-charcoal);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--accent-blue);
+            color: var(--white);
+            border-color: var(--accent-blue);
+        }
+
+        .filter-count {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Timeline styling */
+        .timeline-section {
+            padding: 5rem 2rem;
+            background-color: var(--bg-off);
+            position: relative;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background-color: var(--border-color);
+            transform: translateX(-50%);
+        }
+
+        #achievementsTimeline {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+
+        .achievement-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            width: 100%;
+        }
+
+        /* Alternate timeline positions */
+        .achievement-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .achievement-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .achievement-marker {
+            position: absolute;
+            left: 50%;
+            top: 1.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--accent-blue);
+            border: 3px solid var(--bg-off);
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .achievement-content {
+            width: 45%;
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+        }
+
+        .achievement-content:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-blue);
+            box-shadow: var(--shadow-md);
+        }
+
+        .achievement-image {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .achievement-details {
+            padding: 1.5rem;
+        }
+
+        .achievement-date {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-category {
+            display: inline-block;
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: var(--bg-off);
+        }
+
+        .achievement-title {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .achievement-description {
+            font-size: 0.95rem;
+            color: var(--text-charcoal);
+            line-height: 1.6;
+        }
+
+        .no-results {
+            display: none;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .no-results.show {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 1rem;
+                transform: none;
+            }
+            .achievement-item, .achievement-item:nth-child(odd), .achievement-item:nth-child(even) {
+                flex-direction: row;
+                justify-content: flex-start;
+                padding-left: 2.5rem;
+            }
+            .achievement-marker {
+                left: 1rem;
+                transform: translateX(-50%);
+            }
+            .achievement-content {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Static Blue & Light Blue Mesh Background -->
+    <div class="bg-mesh-container">
+        <div class="mesh-blob mesh-blob-1"></div>
+        <div class="mesh-blob mesh-blob-2"></div>
+        <div class="mesh-blob mesh-blob-3"></div>
+        <div class="mesh-blob mesh-blob-4"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-section">
+                <img src="hcclogo.jpg" alt="HCC Logo" class="logo-img">
+                
+                <div>
+                    <div class="school-name">HCC High School</div>
+                    <div class="school-location">Solapur</div>
+                </div>
+            </div>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="staff.html">Staff</a></li>
+                    <li><a href="admission.html">Admission</a></li>
+                    <li><a href="infrastructure.html">Infrastructure</a></li>
+                    <li><a href="gallery.html">Image Gallery</a></li>
+                    <li><a href="achievements.html" class="active">Achievements</a></li>
+                     <li><a href="notices.html">Notices</a></li>
+                </ul>
+            </nav>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>Our Achievements</h1>
+        <p>Celebrating excellence, dedication, and outstanding accomplishments across academics, sports, and cultural activities</p>
+    </div>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon"><i data-lucide="award"></i></div>
+                <div class="stat-number" id="totalAchievements">0</div>
+                <div class="stat-label">Total Awards</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i data-lucide="book-open"></i></div>
+                <div class="stat-number" id="academicAchievements">0</div>
+                <div class="stat-label">Academic</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i data-lucide="trophy"></i></div>
+                <div class="stat-number" id="sportsAchievements">0</div>
+                <div class="stat-label">Sports</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i data-lucide="clapperboard"></i></div>
+                <div class="stat-number" id="culturalAchievements">0</div>
+                <div class="stat-label">Cultural</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Filter -->
+    <section class="filter-section">
+        <div class="filter-buttons" id="filterButtons">
+            <button class="filter-btn active" data-category="all">All Achievements</button>
+            <!-- Categories will be loaded dynamically -->
+        </div>
+        <div class="filter-count" id="filterCount">Loading achievements...</div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="timeline-line"></div>
+        <div id="achievementsTimeline">
+            <!-- Achievements will be loaded dynamically -->
+        </div>
+        <div class="no-results" id="noResults">
+            <h3>No Achievements Found</h3>
+            <p>Try selecting a different category</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>HCC High School</h3>
+                <p>Excellence in education since 2000</p>
+                <p>Shaping young minds for a brighter tomorrow</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="about.html">About Us</a>
+                <a href="admission.html">Admissions</a>
+                <a href="staff.html">Faculty</a>
+                <a href="achievements.html">Achievements</a>
+            </div>
+
+            <div class="footer-section">
+    <h3>Contact Information</h3>
+
+    <!-- Address -->
+    <div class="footer-map-window">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3801.408602640286!2d75.91264877494157!3d17.67825598325992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc5da640306764d%3A0x6b447604473729e2!2sH.C.C.%20High%20School!5e0!3m2!1sen!2sin!4v1740193155106!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <!-- Address -->
+    <div class="contact-item ">
+        <a href="https://maps.app.goo.gl/4A8v38nVbPxUxZrM8" target="_blank" rel="noopener">
+            <span>Near St. Luke hospital, At Post Nannaj, North Solapur, Solapur- 413222</span>
+        </a>
+    </div>
+
+    <!-- Phone -->
+    <div class="contact-item">
+        <span class="contact-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6.62 10.79a15.53 15.53 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.07 21 3 13.93 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.59a1 1 0 0 1-.25 1.01l-2.2 2.19z"/>
+            </svg>
+        </span>
+        <a href="tel:+918625902920">+91 8625902920</a>
+    </div>
+
+    <!-- Instagram -->
+    <div class="contact-item">
+        <span class="contact-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.51 4.51 0 0 0 12 7.5zm0 7.3A2.8 2.8 0 1 1 14.8 12 2.81 2.81 0 0 1 12 14.8zM17.2 6.3a1.05 1.05 0 1 0 1.05 1.05 1.05 1.05 0 0 0-1.05-1.05z"/>
+            </svg>
+        </span>
+        <a href="https://www.instagram.com/hcc_high_school_/" target="_blank" rel="noopener">
+            @hcc_high_school_
+        </a>
+    </div>
+</div>
+
+
+            <div class="footer-section">
+                <h3>Notifications</h3>
+                <a href="javascript:void(0)" onclick="showNotificationSettings()">🔔 Notification Settings</a>
+                <p style="font-size: 0.85rem; color: var(--neutral-light); margin-top: 0.5rem;">
+                    Manage your notification preferences
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 HCC High School, Solapur. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Supabase JS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+        // ============================================
+        // SUPABASE CONFIGURATION
+        // ============================================
+        const SUPABASE_URL = 'https://yfrurcvidwuzrbgadwvt.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlmcnVyY3ZpZHd1enJiZ2Fkd3Z0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIzMDczMjYsImV4cCI6MjA5Nzg4MzMyNn0.V1n7yVj0xaqisekjhw_dzR8dewNuh84XEd0gd88rN1o';
+
+        const { createClient } = supabase;
+        const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // Global state
+        let allAchievements = [];
+        let filteredAchievements = [];
+
+        // ============================================
+        // LOAD ACHIEVEMENTS FROM SUPABASE
+        // ============================================
+        async function loadAchievements() {
+            try {
+                const { data: achievements, error } = await supabaseClient
+                    .from('achievements')
+                    .select('*')
+                    .eq('is_visible', true)
+                    .order('achievement_date', { ascending: false });
+
+                if (error) {
+                    console.error('Error loading achievements:', error);
+                    showErrorMessage();
+                    return;
+                }
+
+                if (achievements && achievements.length > 0) {
+                    allAchievements = achievements;
+                    filteredAchievements = achievements;
+                    
+                    // Update stats
+                    updateStats(achievements);
+                    
+                    // Extract unique categories
+                    const categories = [...new Set(achievements.map(item => item.category))].filter(c => c);
+                    renderCategoryButtons(categories);
+                    
+                    // Render timeline
+                    renderTimeline(achievements);
+                    updateCount(achievements.length, achievements.length);
+                } else {
+                    showEmptyState();
+                }
+            } catch (err) {
+                console.error('Failed to fetch achievements:', err);
+                showErrorMessage();
+            }
+        }
+
+        // ============================================
+        // UPDATE STATS
+        // ============================================
+        function updateStats(achievements) {
+            document.getElementById('totalAchievements').textContent = achievements.length;
+            
+            const academic = achievements.filter(a => a.category === 'Academic').length;
+            const sports = achievements.filter(a => a.category === 'Sports').length;
+            const cultural = achievements.filter(a => a.category === 'Cultural').length;
+            
+            document.getElementById('academicAchievements').textContent = academic;
+            document.getElementById('sportsAchievements').textContent = sports;
+            document.getElementById('culturalAchievements').textContent = cultural;
+        }
+
+        // ============================================
+        // RENDER CATEGORY BUTTONS
+        // ============================================
+        function renderCategoryButtons(categories) {
+            const filterButtons = document.getElementById('filterButtons');
+            
+            categories.forEach(category => {
+                const btn = document.createElement('button');
+                btn.className = 'filter-btn';
+                btn.setAttribute('data-category', category);
+                btn.textContent = category;
+                
+                btn.addEventListener('click', () => filterAchievements(category));
+                
+                filterButtons.appendChild(btn);
+            });
+        }
+
+        // ============================================
+        // RENDER TIMELINE
+        // ============================================
+        function renderTimeline(achievements) {
+            const timeline = document.getElementById('achievementsTimeline');
+            timeline.innerHTML = '';
+
+            achievements.forEach(achievement => {
+                const item = createTimelineItem(achievement);
+                timeline.appendChild(item);
+            });
+
+            // Trigger GSAP ScrollTrigger Animations
+            setTimeout(() => {
+                if (window.gsap && window.ScrollTrigger) {
+                    // Kill existing timeline ScrollTriggers
+                    ScrollTrigger.getAll().forEach(trigger => {
+                        if (trigger.vars.trigger && trigger.vars.trigger.toString().includes('achievement-item')) {
+                            trigger.kill();
+                        }
+                    });
+
+                    // Animate items
+                    gsap.utils.toArray('.achievement-item').forEach((item) => {
+                        const contentEl = item.querySelector('.achievement-content');
+                        const markerEl = item.querySelector('.achievement-marker');
+
+                        if (contentEl) {
+                            gsap.from(contentEl, {
+                                scrollTrigger: {
+                                    trigger: item,
+                                    start: 'top 85%',
+                                },
+                                y: 40,
+                                opacity: 0,
+                                duration: 0.8,
+                                ease: 'power3.out'
+                            });
+                        }
+
+                        if (markerEl) {
+                            gsap.from(markerEl, {
+                                scrollTrigger: {
+                                    trigger: item,
+                                    start: 'top 85%',
+                                },
+                                scale: 0,
+                                opacity: 0,
+                                duration: 0.6,
+                                ease: 'back.out(1.7)'
+                            });
+                        }
+                    });
+                }
+            }, 50);
+        }
+
+        // ============================================
+        // CREATE TIMELINE ITEM
+        // ============================================
+        function createTimelineItem(achievement) {
+            const div = document.createElement('div');
+            div.className = 'achievement-item';
+            div.setAttribute('data-category', achievement.category || '');
+
+            // Format date
+            const date = achievement.achievement_date 
+                ? new Date(achievement.achievement_date).toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                })
+                : 'Date not available';
+
+            div.innerHTML = `
+                <div class="achievement-marker"></div>
+                <div class="achievement-content">
+                    ${achievement.image_url ? `
+                        <img src="${achievement.image_url}" 
+                             alt="${achievement.title}" 
+                             class="achievement-image"
+                             loading="lazy"
+                             onerror="this.style.display='none'">
+                    ` : ''}
+                    <div class="achievement-details">
+                        <span class="achievement-date">${date}</span>
+                        ${achievement.category ? `<span class="achievement-category">${achievement.category}</span>` : ''}
+                        <h3 class="achievement-title">${achievement.title}</h3>
+                        <p class="achievement-description">${achievement.description || ''}</p>
+                    </div>
+                </div>
+            `;
+
+            return div;
+        }
+
+        // ============================================
+        // FILTER ACHIEVEMENTS
+        // ============================================
+        function filterAchievements(category) {
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-category') === category) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Filter achievements
+            if (category === 'all') {
+                filteredAchievements = allAchievements;
+            } else {
+                filteredAchievements = allAchievements.filter(a => a.category === category);
+            }
+
+            // Re-render timeline
+            renderTimeline(filteredAchievements);
+            updateCount(filteredAchievements.length, allAchievements.length);
+
+            // Show/hide no results
+            if (filteredAchievements.length === 0) {
+                document.getElementById('noResults').classList.add('show');
+            } else {
+                document.getElementById('noResults').classList.remove('show');
+            }
+        }
+
+        // ============================================
+        // UPDATE COUNT
+        // ============================================
+        function updateCount(visible, total) {
+            const countEl = document.getElementById('filterCount');
+            if (visible === total) {
+                countEl.textContent = `Showing all ${total} achievements`;
+            } else {
+                countEl.textContent = `Showing ${visible} of ${total} achievements`;
+            }
+        }
+
+        // ============================================
+        // ERROR & EMPTY STATE
+        // ============================================
+        function showEmptyState() {
+            const timeline = document.getElementById('achievementsTimeline');
+            timeline.innerHTML = `
+                <div style="text-align: center; padding: 4rem 2rem;">
+                    <h3 style="font-size: 1.5rem; color: var(--neutral-warm); margin-bottom: 1rem;">
+                        No achievements available
+                    </h3>
+                    <p style="color: var(--neutral-warm);">
+                        Achievements will be added soon.
+                    </p>
+                </div>
+            `;
+            document.getElementById('filterCount').textContent = 'No achievements to display';
+        }
+
+        function showErrorMessage() {
+            const timeline = document.getElementById('achievementsTimeline');
+            timeline.innerHTML = `
+                <div style="text-align: center; padding: 4rem 2rem;">
+                    <h3 style="font-size: 1.5rem; color: var(--maroon-primary); margin-bottom: 1rem;">
+                        Unable to load achievements
+                    </h3>
+                    <p style="color: var(--neutral-warm); margin-bottom: 1.5rem;">
+                        Please check your internet connection and try again.
+                    </p>
+                    <button onclick="loadAchievements()" 
+                            style="padding: 0.8rem 2rem; background: var(--maroon-primary); 
+                                   color: white; border: none; border-radius: 8px; cursor: pointer; 
+                                   font-size: 1rem; font-weight: 600;">
+                        Retry
+                    </button>
+                </div>
+            `;
+        }
+
+        // ============================================
+        // MOBILE MENU & HEADER SCROLL
+        // ============================================
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.querySelector('nav');
+        const navLinks = document.querySelectorAll('nav ul li a');
+
+        if (hamburger && nav) {
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                hamburger.classList.toggle('active');
+                nav.classList.toggle('active');
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    nav.classList.remove('active');
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (nav.classList.contains('active') && !nav.contains(e.target) && e.target !== hamburger) {
+                    hamburger.classList.remove('active');
+                    nav.classList.remove('active');
+                }
+            });
+        }
+
+        let lastScroll = 0;
+        const header = document.querySelector('header');
+
+        if (header) {
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset;
+                
+                if (currentScroll <= 0) {
+                    header.style.transform = 'translateY(0)';
+                    return;
+                }
+                
+                if (currentScroll > lastScroll && currentScroll > 80) {
+                    header.style.transform = 'translateY(-100%)';
+                } else {
+                    header.style.transform = 'translateY(0)';
+                }
+                
+                lastScroll = currentScroll;
+            });
+        }
+
+        // ============================================
+        // INITIALIZE
+        // ============================================
+        window.addEventListener('DOMContentLoaded', () => {
+            loadAchievements();
+
+            // Initialize Lucide Icons
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+
+            // GSAP Entrance Animations
+            if (window.gsap) {
+                const headerTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+                headerTl.from('header', { y: -50, opacity: 0, duration: 1 })
+                        .from('.page-header h1', { y: 30, opacity: 0, duration: 0.8 }, '-=0.6')
+                        .from('.page-header p', { y: 20, opacity: 0, duration: 0.8 }, '-=0.6');
+
+                // Animate stats cards stagger
+                gsap.from('.stat-card', {
+                    delay: 0.5,
+                    y: 30,
+                    opacity: 0,
+                    duration: 0.8,
+                    stagger: 0.15,
+                    ease: 'power3.out'
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+

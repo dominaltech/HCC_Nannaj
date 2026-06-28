@@ -1,0 +1,2189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="HCC High School and Junior College Solapur - Hindustan Covenant Church School providing quality education in Solapur, Maharashtra">
+    <meta name="keywords"
+        content="HCC High School, Solapur school, Hindustan Covenant Church, Junior College Solapur, education Solapur">
+    <meta name="author" content="HCC High School Solapur">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0d253f">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="HCC High School Solapur">
+    <meta property="og:description" content="Hindustan Covenant Church High School and Junior College, Solapur">
+    <meta property="og:image" content="https://hccsolapur.in/hcclogo.jpg">
+    <meta property="og:url" content="https://hccsolapur.in">
+    <meta property="og:type" content="website">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://hccsolapur.in/index.html">
+    <link rel="icon" type="image/png" href="/hcc.jpg">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HighSchool",
+    "name": "Hindustan Covenant Church High School and Junior College",
+    "alternateName": "HCC High School Solapur",
+    "url": "https://hccsolapur.in",
+    "logo": "https://hccsolapur.in/hcclogo.jpg",
+    "image": "https://hccsolapur.in/hcc.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Solapur",
+      "addressRegion": "Maharashtra",
+      "addressCountry": "IN"
+    }
+  }
+  </script>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="HCC School">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+
+    <title>HCC High School, Solapur | Excellence in Education</title>
+
+    <!-- Global Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Lucide Icons Vector Library -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- GSAP Animations & ScrollTrigger CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Page Specific Styles -->
+    <style>
+        /* Hero Section */
+        .hero {
+            padding: 8rem 2rem 6rem;
+            background-color: var(--bg-light);
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.15;
+            color: var(--accent-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-image img {
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-lg);
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        @media (max-width: 968px) {
+            .hero {
+                padding: 6rem 1rem 4rem;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+        }
+
+        /* Video Section styling */
+        .video-slider-section {
+            padding: 5rem 2rem;
+            background-color: var(--bg-off);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .video-slider-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .video-filter-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0 3rem;
+            justify-content: center;
+        }
+
+        .filter-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            color: var(--text-charcoal);
+        }
+
+        .video-select {
+            padding: 0.75rem 2.5rem 0.75rem 1rem;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background-color: var(--bg-light);
+            color: var(--text-charcoal);
+            cursor: pointer;
+            min-width: 260px;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%230d253f' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 16px;
+        }
+
+        .video-select:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        .video-slider-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin: 2rem auto;
+            max-width: 960px;
+        }
+
+        .video-display {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-caption {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            text-align: center;
+        }
+
+        .video-counter {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .slider-arrow {
+            width: 48px;
+            height: 48px;
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-blue);
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .slider-arrow:hover {
+            background-color: var(--accent-blue-light);
+            border-color: var(--accent-blue);
+        }
+
+        @media (max-width: 768px) {
+            .video-slider-wrapper {
+                gap: 0.5rem;
+            }
+
+            .slider-arrow {
+                display: none;
+            }
+        }
+
+        /* Highlights icons color overrides */
+        .highlight-icon {
+            color: var(--accent-blue);
+            width: 40px;
+            height: 40px;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        /* Alumni Section styling */
+        .alumni-section {
+            padding: 5rem 2rem;
+            background-color: var(--bg-light);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .alumni-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .alumni-slider-wrapper {
+            max-width: 800px;
+            margin: 2rem auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .alumni-slider-track {
+            display: flex;
+            gap: 1.5rem;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .alumni-card {
+            flex: 0 0 100%;
+            background-color: var(--bg-off);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .alumni-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-blue);
+            margin: 0 auto 1.5rem;
+        }
+
+        .alumni-name {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .alumni-designation {
+            font-family: var(--font-sans);
+            font-weight: 600;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .alumni-quote {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--text-charcoal);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .alumni-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .alumni-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .alumni-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--border-color);
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .alumni-dot.active {
+            background-color: var(--accent-blue);
+        }
+
+        /* Mobile FABs style overrides */
+        .mobile-fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: none;
+            flex-direction: column;
+            gap: 0.75rem;
+            z-index: 999;
+        }
+
+        .fab-btn {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.2s ease;
+        }
+
+        .fab-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        /* Static Blue & Light Blue Mesh Background */
+        body {
+            background-color: #fafbfc !important;
+            position: relative;
+        }
+
+        .bg-mesh-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .mesh-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.35; /* Lowered from 0.75 for a much lighter/subtle highlight */
+            pointer-events: none;
+        }
+
+        .mesh-blob-1 {
+            background: rgba(30, 58, 138, 0.08); /* Dark Blue */
+            top: -10%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+        }
+
+        .mesh-blob-2 {
+            background: rgba(59, 130, 246, 0.1); /* Light Blue */
+            bottom: -15%;
+            right: -10%;
+            width: 700px;
+            height: 700px;
+        }
+
+        .mesh-blob-3 {
+            background: rgba(56, 189, 248, 0.07); /* Cyan / Light Blue */
+            top: 45%;
+            left: -15%;
+            width: 600px;
+            height: 600px;
+        }
+
+        .mesh-blob-4 {
+            background: rgba(29, 78, 216, 0.05); /* Soft Blue */
+            top: 15%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+        }
+
+        /* Custom Premium Image Slider styling */
+        .hero-slider-section {
+            max-width: 1280px;
+            margin: 3rem auto 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .custom-slider-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 21 / 10; /* Taller proportion for clean text below */
+            background-color: transparent;
+            user-select: none;
+            touch-action: pan-y;
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .custom-slider-wrapper {
+                aspect-ratio: 16 / 12; /* Optimized proportion on mobile devices */
+            }
+        }
+
+        .slider-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform;
+        }
+
+        .slider-slide {
+            flex-shrink: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .slider-image-container {
+            width: 100%;
+            height: 80%;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+            position: relative;
+        }
+
+        .slider-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+            transition: transform 6s ease;
+        }
+
+        /* Ken Burns zoom effect on active slide */
+        .slider-slide.active img {
+            transform: scale(1.06);
+        }
+
+        /* Clean Text Caption under the image block */
+        .slide-caption-box {
+            height: 20%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0.75rem 0.5rem;
+            color: var(--text-charcoal);
+            text-align: left;
+            z-index: 5;
+        }
+
+        .slide-caption-box h3 {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            color: var(--accent-blue);
+            margin-bottom: 0.15rem;
+        }
+
+        .slide-caption-box p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Arrows Navigation inside the slider image container bounds */
+        .slider-arrow {
+            position: absolute;
+            top: 40%; /* Centered vertically relative to the 80% height image container */
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--accent-blue);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .slider-arrow:hover {
+            background: #ffffff;
+            color: var(--accent-blue-hover);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .slider-arrow-prev {
+            left: 1.5rem;
+        }
+
+        .slider-arrow-next {
+            right: 1.5rem;
+        }
+
+        .slider-arrow svg {
+            width: 20px;
+            height: 20px;
+            stroke-width: 2.5;
+        }
+
+        /* Indicators bullets centered relative to the image container bottom */
+        .slider-dots {
+            position: absolute;
+            top: 74%; /* Positioned right at the base of the image container bounds */
+            right: 1.5rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+            transform: translateY(-100%);
+        }
+
+        .slider-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background: #ffffff;
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* Make home page sections transparent to show mesh gradient background */
+        .highlights,
+        .page-header,
+        .notice-section,
+        .about-preview,
+        section {
+            background-color: transparent !important;
+        }
+
+        @media (max-width: 768px) {
+            /* Keep highlights grid columns side-by-side on mobile screen view */
+            .highlights-grid {
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 0.5rem !important;
+                padding: 0 0.25rem !important;
+            }
+
+            .highlight-card {
+                padding: 1rem 0.25rem !important;
+                border-radius: 8px !important;
+                min-height: auto !important;
+            }
+
+            .highlight-icon {
+                width: 24px !important;
+                height: 24px !important;
+                margin-bottom: 0.5rem !important;
+            }
+
+            .highlight-card h3 {
+                font-size: 0.75rem !important;
+                margin-bottom: 0 !important;
+                line-height: 1.25 !important;
+            }
+
+            /* Hide definitions/descriptions completely on mobile screen view */
+            .highlight-card p {
+                display: none !important;
+            }
+
+            .highlights {
+                padding: 2.5rem 0.25rem !important;
+            }
+
+            .highlights-container .section-title {
+                font-size: 1.5rem !important;
+                margin-bottom: 1.25rem !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Static Blue & Light Blue Mesh Background -->
+    <div class="bg-mesh-container">
+        <div class="mesh-blob mesh-blob-1"></div>
+        <div class="mesh-blob mesh-blob-2"></div>
+        <div class="mesh-blob mesh-blob-3"></div>
+        <div class="mesh-blob mesh-blob-4"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-section">
+                <img src="hcclogo.jpg" alt="HCC Logo" class="logo-img">
+                <div>
+                    <div class="school-name">HCC High School</div>
+                    <div class="school-location">Nannaj</div>
+                </div>
+            </div>
+
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="staff.html">Staff</a></li>
+                    <li><a href="admission.html">Admission</a></li>
+                    <li><a href="infrastructure.html">Infrastructure</a></li>
+                    <li><a href="gallery.html">Image Gallery</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="notices.html">Notices</a></li>
+                </ul>
+            </nav>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Welcome to HINDUSTAN CONVENT CHURCH High School</h1>
+                <p>Nurturing minds, building character, and inspiring excellence for a brighter future.</p>
+                <div class="cta-buttons">
+                    <a href="admission.html" class="btn btn-primary">Admissions Open 2026-27</a>
+                    <a href="about.html" class="btn btn-secondary">About Us</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="hcc.jpeg" alt="HCC High School Building">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Image Slider Component (Welcome Features) -->
+    <div class="hero-slider-section">
+        <div class="custom-slider-wrapper" id="customSlider">
+            <!-- Slider Track -->
+            <div class="slider-track" id="sliderTrack">
+                <!-- Slide 1 -->
+                <div class="slider-slide active">
+                    <div class="slider-image-container">
+                        <img src="staff.jpg" alt="Supportive Staff">
+                    </div>
+                    <div class="slide-caption-box">
+                        <h3>Supportive Staff</h3>
+                        <p>Dedicated educators guiding students through every academic step.</p>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="slider-slide">
+                    <div class="slider-image-container">
+                        <img src="sports.jpg" alt="Sports Activities">
+                    </div>
+                    <div class="slide-caption-box">
+                        <h3>Sports Activities</h3>
+                        <p>Fostering teamwork, fitness, and competitiveness in state-level sports.</p>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="slider-slide">
+                    <div class="slider-image-container">
+                        <img src="smartclass.jpg" alt="Smart Classrooms">
+                    </div>
+                    <div class="slide-caption-box">
+                        <h3>Smart Classrooms</h3>
+                        <p>Engaging digital visual learning systems in modern classroom facilities.</p>
+                    </div>
+                </div>
+                <!-- Slide 4 -->
+                <div class="slider-slide">
+                    <div class="slider-image-container">
+                        <img src="activities.jpeg" alt="Extra Activities">
+                    </div>
+                    <div class="slide-caption-box">
+                        <h3>Extra Activities</h3>
+                        <p>Nurturing creativity with visual arts, chess, and music training sessions.</p>
+                    </div>
+                </div>
+                <!-- Slide 5 -->
+                <div class="slider-slide">
+                    <div class="slider-image-container">
+                        <img src="exercises.jpg" alt="Exercises">
+                    </div>
+                    <div class="slide-caption-box">
+                        <h3>Physical Exercises</h3>
+                        <p>Building strong bodies and healthy discipline with daily yoga and drilling.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom Inside Arrows relative to Image bounds -->
+            <div class="slider-arrow slider-arrow-prev" id="sliderPrev">
+                <i data-lucide="chevron-left"></i>
+            </div>
+            <div class="slider-arrow slider-arrow-next" id="sliderNext">
+                <i data-lucide="chevron-right"></i>
+            </div>
+
+            <!-- Bullets Indicators relative to Image bounds -->
+            <div class="slider-dots" id="sliderDots">
+                <span class="slider-dot active" data-index="0"></span>
+                <span class="slider-dot" data-index="1"></span>
+                <span class="slider-dot" data-index="2"></span>
+                <span class="slider-dot" data-index="3"></span>
+                <span class="slider-dot" data-index="4"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Highlights -->
+    <section class="highlights">
+        <div class="highlights-container">
+            <h2 class="section-title">Why Choose HCC High School</h2>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <i data-lucide="users" class="highlight-icon"></i>
+                    <h3>Expert Faculty</h3>
+                    <p>Highly qualified and experienced teachers dedicated to student success and holistic development.
+                    </p>
+                </div>
+
+                <div class="highlight-card">
+                    <i data-lucide="school" class="highlight-icon"></i>
+                    <h3>Modern Infrastructure</h3>
+                    <p>State-of-the-art classrooms, laboratories, library, and sports facilities for comprehensive
+                        learning.</p>
+                </div>
+
+                <div class="highlight-card">
+                    <i data-lucide="award" class="highlight-icon"></i>
+                    <h3>Academic Excellence</h3>
+                    <p>Consistent track record of outstanding results and successful alumni across diverse fields.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campus Showcase Section -->
+    <section class="campus-showcase" style="padding: 4rem 2rem; background: #f8fafc; text-align: center;">
+        <div style="max-width: 1100px; margin: 0 auto;">
+            <h2 class="section-title" style="margin-bottom: 1rem; color: var(--maroon-dark, #800000);">Our Campus
+                Environment</h2>
+            <p
+                style="color: var(--neutral-warm, #475569); max-width: 700px; margin: 0 auto 2rem auto; font-size: 1.1rem; line-height: 1.6;">
+                A modern learning environment committed to academic excellence, sports, and holistic development.</p>
+            <div
+                style="overflow: hidden; border-radius: 20px; box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12); background: #fff; padding: 8px;">
+                <img src="hcc2.jpeg" alt="HCC High School Campus Overview"
+                    style="width: 100%; height: auto; display: block; border-radius: 14px; object-fit: cover;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Preview -->
+    <!-- <section class="gallery-preview">
+        <div class="gallery-container">
+            <h2 class="section-title">Campus Glimpses</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item"></div>
+                <div class="gallery-item"></div>
+                <div class="gallery-item"></div>
+                <div class="gallery-item"></div>
+            </div>
+            <div class="view-all">
+                <a href="gallery.html" class="btn btn-primary">View Full Gallery</a>
+            </div>
+        </div>
+    </section> -->
+    <!-- Mobile Floating Action Buttons -->
+    <div class="mobile-fab">
+        <!-- Call -->
+        <a href="tel:+918625902920" class="fab-btn call-btn" aria-label="Call">
+            <!-- Phone SVG -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                    d="M6.62 10.79a15.53 15.53 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.07 21 3 13.93 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.59a1 1 0 0 1-.25 1.01l-2.2 2.19z" />
+            </svg>
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/918625902920" target="_blank" class="fab-btn whatsapp-btn" aria-label="WhatsApp">
+            <!-- WhatsApp SVG -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                    d="M20.52 3.48A11.86 11.86 0 0 0 12.04 0C5.39 0 .01 5.38 0 12.03c0 2.12.55 4.2 1.6 6.04L0 24l6.14-1.61a11.93 11.93 0 0 0 5.9 1.5h.01c6.65 0 12.03-5.38 12.03-12.03 0-3.2-1.25-6.2-3.56-8.38zM12.05 21.4h-.01a9.37 9.37 0 0 1-4.78-1.31l-.34-.2-3.65.96.97-3.55-.22-.36a9.38 9.38 0 1 1 8.03 4.46zm5.43-7.41c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.66.15-.2.3-.76.97-.93 1.17-.17.2-.34.22-.64.07-.3-.15-1.26-.46-2.4-1.47-.89-.8-1.49-1.79-1.66-2.09-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.66-1.59-.9-2.18-.24-.58-.48-.5-.66-.51-.17-.01-.37-.01-.56-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.27.5 1.7.64.71.22 1.36.19 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.56-.35z" />
+            </svg>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>HCC High School</h3>
+                <p>Excellence in education since 2000</p>
+                <p>Shaping young minds for a brighter tomorrow</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="about.html">About Us</a>
+                <a href="admission.html">Admissions</a>
+                <a href="staff.html">Faculty</a>
+                <a href="achievements.html">Achievements</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Information</h3>
+
+                <!-- Address -->
+                <div class="footer-map-window">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3801.408602640286!2d75.91264877494157!3d17.67825598325992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc5da640306764d%3A0x6b447604473729e2!2sH.C.C.%20High%20School!5e0!3m2!1sen!2sin!4v1740193155106!5m2!1sen!2sin"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+
+                <!-- Address -->
+                <div class="contact-item ">
+                    <a href="https://maps.app.goo.gl/4A8v38nVbPxUxZrM8" target="_blank" rel="noopener">
+                        <span>Near St. Luke hospital, At Post Nannaj, North Solapur, Solapur- 413222</span>
+                    </a>
+                </div>
+
+                <!-- Phone -->
+                <div class="contact-item">
+                    <span class="contact-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M6.62 10.79a15.53 15.53 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.07 21 3 13.93 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.59a1 1 0 0 1-.25 1.01l-2.2 2.19z" />
+                        </svg>
+                    </span>
+                    <a href="tel:+918625902920">+91 8625902920</a>
+                </div>
+
+                <!-- Instagram -->
+                <div class="contact-item">
+                    <span class="contact-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.51 4.51 0 0 0 12 7.5zm0 7.3A2.8 2.8 0 1 1 14.8 12 2.81 2.81 0 0 1 12 14.8zM17.2 6.3a1.05 1.05 0 1 0 1.05 1.05 1.05 1.05 0 0 0-1.05-1.05z" />
+                        </svg>
+                    </span>
+                    <a href="https://www.instagram.com/hcc_high_school_/" target="_blank" rel="noopener">
+                        @hcc_high_school_
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="footer-section">
+                <h3>Notifications</h3>
+                <a href="javascript:void(0)" onclick="showNotificationSettings()">🔔 Notification Settings</a>
+                <p style="font-size: 0.85rem; color: var(--neutral-light); margin-top: 0.5rem;">
+                    Manage your notification preferences
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 HCC High School, Solapur. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        if (window.performance && window.performance.navigation.type === window.performance.navigation.TYPE_BACK_FORWARD) {
+            window.location.reload();
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // ============================================
+        // SUPABASE CONFIGURATION
+        // ============================================
+        const SUPABASE_URL = 'https://yfrurcvidwuzrbgadwvt.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlmcnVyY3ZpZHd1enJiZ2Fkd3Z0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIzMDczMjYsImV4cCI6MjA5Nzg4MzMyNn0.V1n7yVj0xaqisekjhw_dzR8dewNuh84XEd0gd88rN1o';
+
+        const { createClient } = supabase;
+        const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+
+
+        // Header hide on scroll down, show on scroll up
+        let lastScroll = 0;
+        const header = document.querySelector('header');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll <= 0) {
+                header.style.transform = 'translateY(0)';
+                return;
+            }
+
+            if (currentScroll > lastScroll && currentScroll > 80) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+
+        // ============================================
+        // PUSH NOTIFICATION SETUP
+        // ============================================
+        const VAPID_PUBLIC_KEY = 'BMjWrT4Mo49qpPCXXx_qWNS8VJfVNE5-laD52FT-usDylWdolRBv4qU1EpzdwK-PUAqj2JKB4ZAFvfABhZxMyKs';
+
+        // Convert VAPID key
+        function urlBase64ToUint8Array(base64String) {
+            const padding = '='.repeat((4 - base64String.length % 4) % 4);
+            const base64 = (base64String + padding)
+                .replace(/\-/g, '+')
+                .replace(/_/g, '/');
+
+            const rawData = window.atob(base64);
+            const outputArray = new Uint8Array(rawData.length);
+
+            for (let i = 0; i < rawData.length; ++i) {
+                outputArray[i] = rawData.charCodeAt(i);
+            }
+            return outputArray;
+        }
+
+        // Subscribe to push notifications
+        async function subscribeToPush() {
+            try {
+                const registration = await navigator.serviceWorker.ready;
+
+                let subscription = await registration.pushManager.getSubscription();
+
+                if (!subscription) {
+                    subscription = await registration.pushManager.subscribe({
+                        userVisibleOnly: true,
+                        applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
+                    });
+                }
+
+                await saveSubscriptionToDatabase(subscription);
+                console.log('✅ Push subscription saved');
+                return subscription;
+
+            } catch (error) {
+                console.error('❌ Failed to subscribe to push:', error);
+                return null;
+            }
+        }
+
+        // Save subscription to Supabase
+        async function saveSubscriptionToDatabase(subscription) {
+            const subscriptionJson = subscription.toJSON();
+
+            const deviceType = /Mobile|Android|iPhone/i.test(navigator.userAgent)
+                ? 'mobile'
+                : 'desktop';
+
+            const { data, error } = await supabaseClient
+                .from('push_subscriptions')
+                .upsert({
+                    endpoint: subscription.endpoint,
+                    p256dh: subscriptionJson.keys.p256dh,
+                    auth: subscriptionJson.keys.auth,
+                    user_agent: navigator.userAgent,
+                    device_type: deviceType,
+                    is_active: true,
+                    last_used: new Date().toISOString()
+                }, {
+                    onConflict: 'endpoint'
+                });
+
+            if (error) {
+                console.error('❌ Failed to save subscription:', error);
+            }
+        }
+
+        // Request notification permission
+        async function requestNotificationPermission() {
+            if (!('Notification' in window)) {
+                console.log('❌ Notifications not supported');
+                return false;
+            }
+
+            if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
+                console.log('❌ Push notifications not supported');
+                return false;
+            }
+
+            const permission = await Notification.requestPermission();
+
+            if (permission === 'granted') {
+                console.log('✅ Notification permission granted');
+                localStorage.setItem('notifications_enabled', 'true');
+                await subscribeToPush();
+                return true;
+            } else {
+                console.log('❌ Notification permission denied');
+                localStorage.setItem('notifications_enabled', 'false');
+                return false;
+            }
+        }
+
+        // Unsubscribe from push notifications
+        async function unsubscribeFromPush() {
+            try {
+                const registration = await navigator.serviceWorker.ready;
+                const subscription = await registration.pushManager.getSubscription();
+
+                if (subscription) {
+                    await subscription.unsubscribe();
+
+                    await supabaseClient
+                        .from('push_subscriptions')
+                        .update({ is_active: false })
+                        .eq('endpoint', subscription.endpoint);
+
+                    console.log('✅ Unsubscribed from push notifications');
+                }
+
+                localStorage.setItem('notifications_enabled', 'false');
+            } catch (error) {
+                console.error('❌ Failed to unsubscribe:', error);
+            }
+        }
+
+        // Show notification settings modal
+        function showNotificationSettings() {
+            const modal = document.createElement('div');
+            modal.id = 'notificationSettingsModal';
+            modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        `;
+
+            const isEnabled = localStorage.getItem('notifications_enabled') === 'true';
+            const blogsEnabled = localStorage.getItem('notify_blogs') !== 'false';
+            const achievementsEnabled = localStorage.getItem('notify_achievements') !== 'false';
+
+            modal.innerHTML = `
+            <div style="
+                background: white;
+                padding: 2rem;
+                border-radius: 16px;
+                max-width: 450px;
+                width: 90%;
+                animation: slideUp 0.4s ease;
+            ">
+                <h2 style="color: #0f172a; margin-bottom: 1.5rem; font-size: 1.6rem;">Notification Settings</h2>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; background: #f8fafc; border-radius: 8px; cursor: pointer; margin-bottom: 0.5rem;">
+                        <span style="color: #0f172a; font-weight: 600;">Enable Notifications</span>
+                        <input type="checkbox" id="enableNotifications" ${isEnabled ? 'checked' : ''} style="width: 20px; height: 20px; cursor: pointer;">
+                    </label>
+                    <p style="color: #64748b; font-size: 0.85rem; padding-left: 1rem;">Receive updates about school notices and achievements</p>
+                </div>
+
+                <div style="margin-bottom: 1rem; opacity: ${isEnabled ? '1' : '0.5'};">
+                    <label style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; background: #f8fafc; border-radius: 8px; cursor: pointer; margin-bottom: 0.5rem;">
+                        <div>
+                            <div style="color: #0f172a; font-weight: 600;">📢 Notices & Updates</div>
+                            <div style="color: #64748b; font-size: 0.85rem;">Get notified about new school notices</div>
+                        </div>
+                        <input type="checkbox" id="notifyBlogs" ${blogsEnabled ? 'checked' : ''} ${!isEnabled ? 'disabled' : ''} style="width: 20px; height: 20px; cursor: pointer;">
+                    </label>
+
+                    <label style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; background: #f8fafc; border-radius: 8px; cursor: pointer;">
+                        <div>
+                            <div style="color: #0f172a; font-weight: 600;">🏆 Achievements</div>
+                            <div style="color: #64748b; font-size: 0.85rem;">Get notified about new achievements</div>
+                        </div>
+                        <input type="checkbox" id="notifyAchievements" ${achievementsEnabled ? 'checked' : ''} ${!isEnabled ? 'disabled' : ''} style="width: 20px; height: 20px; cursor: pointer;">
+                    </label>
+                </div>
+
+                <button id="saveSettings" style="
+                    padding: 1rem 2rem;
+                    background: #1e3a8a;
+                    color: white;
+                    border: none;
+                    border-radius: 8px;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    width: 100%;
+                    margin-bottom: 0.5rem;
+                ">Save Settings</button>
+                
+                <button id="closeSettings" style="
+                    padding: 1rem 2rem;
+                    background: transparent;
+                    color: #1e3a8a;
+                    border: 2px solid #cbd5e1;
+                    border-radius: 8px;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    width: 100%;
+                ">Close</button>
+            </div>
+        `;
+
+            document.body.appendChild(modal);
+
+            // Toggle dependent checkboxes
+            document.getElementById('enableNotifications').addEventListener('change', (e) => {
+                const isChecked = e.target.checked;
+                document.getElementById('notifyBlogs').disabled = !isChecked;
+                document.getElementById('notifyAchievements').disabled = !isChecked;
+                document.getElementById('notifyBlogs').parentElement.parentElement.style.opacity = isChecked ? '1' : '0.5';
+            });
+
+            // Save settings
+            document.getElementById('saveSettings').addEventListener('click', async () => {
+                const enableNotifications = document.getElementById('enableNotifications').checked;
+                const notifyBlogs = document.getElementById('notifyBlogs').checked;
+                const notifyAchievements = document.getElementById('notifyAchievements').checked;
+
+                if (enableNotifications) {
+                    const granted = await requestNotificationPermission();
+                    if (granted) {
+                        localStorage.setItem('notify_blogs', notifyBlogs);
+                        localStorage.setItem('notify_achievements', notifyAchievements);
+                        alert('✅ Notification settings saved!');
+                    }
+                } else {
+                    await unsubscribeFromPush();
+                    alert('✅ Notifications disabled');
+                }
+
+                modal.remove();
+            });
+
+            // Close button
+            document.getElementById('closeSettings').addEventListener('click', () => {
+                modal.remove();
+            });
+        }
+
+        // Show notification permission prompt
+        function showNotificationPrompt() {
+            // Don't show if already answered
+            if (localStorage.getItem('notification_prompt_shown') === 'true') {
+                return;
+            }
+
+            // Don't show if permission already granted or denied
+            if (Notification.permission !== 'default') {
+                localStorage.setItem('notification_prompt_shown', 'true');
+                return;
+            }
+
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        `;
+
+            modal.innerHTML = `
+            <div style="
+                background: white;
+                padding: 2rem;
+                border-radius: 16px;
+                max-width: 400px;
+                width: 90%;
+                text-align: center;
+                animation: slideUp 0.4s ease;
+            ">
+                <div style="font-size: 3rem; margin-bottom: 1rem;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg></div>
+                <h2 style="color: #0f172a; margin-bottom: 1rem; font-size: 1.5rem;">Stay Updated!</h2>
+                <p style="color: #64748b; margin-bottom: 2rem; line-height: 1.6;">
+                    Enable notifications to receive important school notices, announcements, and achievement updates instantly - even when the app is closed.
+                </p>
+                <button id="allowNotifications" style="
+                    padding: 1rem 2rem;
+                    background: #1e3a8a;
+                    color: white;
+                    border: none;
+                    border-radius: 8px;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    width: 100%;
+                    margin-bottom: 0.5rem;
+                ">Allow Notifications</button>
+                <button id="notNow" style="
+                    padding: 1rem 2rem;
+                    background: transparent;
+                    color: #1e3a8a;
+                    border: 2px solid #cbd5e1;
+                    border-radius: 8px;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    width: 100%;
+                ">Not Now</button>
+                <button id="customizeNotifications" style="
+                    padding: 0.5rem;
+                    background: transparent;
+                    color: #64748b;
+                    border: none;
+                    font-size: 0.9rem;
+                    cursor: pointer;
+                    width: 100%;
+                    margin-top: 0.5rem;
+                    text-decoration: underline;
+                ">Customize Settings</button>
+            </div>
+        `;
+
+            document.body.appendChild(modal);
+
+            // Allow button
+            document.getElementById('allowNotifications').addEventListener('click', async () => {
+                modal.remove();
+                localStorage.setItem('notification_prompt_shown', 'true');
+                await requestNotificationPermission();
+            });
+
+            // Not now button
+            document.getElementById('notNow').addEventListener('click', () => {
+                modal.remove();
+                localStorage.setItem('notification_prompt_shown', 'true');
+            });
+
+            // Customize button
+            document.getElementById('customizeNotifications').addEventListener('click', () => {
+                modal.remove();
+                localStorage.setItem('notification_prompt_shown', 'true');
+                showNotificationSettings();
+            });
+        }
+
+
+
+
+
+
+
+
+        // Video Data (Hardcoded) - SINGLE SOURCE OF TRUTH
+        const videos = [
+            {
+                url: 'https://yfrurcvidwuzrbgadwvt.supabase.co/storage/v1/object/public/site_videos/Hindustani%20Covenant%20Church%20High%20School%20and%20Junior%20College_%20Solapur._10th%20August%202014__hcc.%20_artcompetition_As%20we%20celebrate%20our%2025th%20Silver%20Jubilee%20year_%20we%20(.mp4',
+                caption: 'Art Competition',
+                icon: 'sports'
+            },
+            {
+                url: 'https://yfrurcvidwuzrbgadwvt.supabase.co/storage/v1/object/public/site_videos/DRhAaD9kVbA(MP4).mp4',
+                caption: 'Grand Parents Day Celebration',
+                icon: 'science'
+            },
+            {
+                url: 'https://yfrurcvidwuzrbgadwvt.supabase.co/storage/v1/object/public/site_videos/_HCC%20_preprimary%20_firstdayofschool%20__23rd%20June%202025_First%20day%20of%20our%20toddlers.%20_Our%20Secretary%20Dr.%20MRS.%20Mackenzie%20ma_am%20was%20the%20chief%20guest.__Tiny%20shoes%20and%20(.mp4',
+                caption: 'First Day Pre-Primary',
+                icon: 'music'
+            },
+            {
+                url: 'https://yfrurcvidwuzrbgadwvt.supabase.co/storage/v1/object/public/site_videos/_hcc%20_rainyseason%20_rainydayfun%20_rainydayvibes%20_preprimary%20_rainactivity%20.%20%2025th%20July%202024_Pre-primary%20section._Rainy%20days%20can%20be%20a%20wonderful%20opportunity%20to%20(.mp4',
+                caption: 'Rainy Day',
+                icon: 'graduation'
+            },
+            {
+                url: 'https://yfrurcvidwuzrbgadwvt.supabase.co/storage/v1/object/public/site_videos/DLH-DrKxXYa(MP4).mp4',
+                caption: 'International Yoga Day',
+                icon: 'campus'
+            }
+        ];
+
+        let currentVideoIndex = 0;
+        let currentAlumniIndex = 0;
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // Video and Alumni sliders removed per user request
+        });
+
+
+        // Hamburger Menu Toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.getElementById('hamburger');
+            const nav = document.querySelector('nav');
+            const navLinks = document.querySelectorAll('nav ul li a');
+
+            if (hamburger && nav) {
+                // Toggle mobile menu on hamburger click
+                hamburger.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    hamburger.classList.toggle('active');
+                    nav.classList.toggle('active');
+                });
+
+                // Close menu when clicking any nav link
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        hamburger.classList.remove('active');
+                        nav.classList.remove('active');
+                    });
+                });
+
+                // Close menu when clicking anywhere outside
+                document.addEventListener('click', (e) => {
+                    if (nav.classList.contains('active') && !nav.contains(e.target) && e.target !== hamburger) {
+                        hamburger.classList.remove('active');
+                        nav.classList.remove('active');
+                    }
+                });
+            }
+        });
+
+        // Initialize Video Slider with Dropdown Filter
+        function initializeVideoSlider() {
+            const mainVideo = document.getElementById('mainVideo');
+            const videoCaption = document.getElementById('videoCaption');
+            const videoCounter = document.getElementById('videoCounter');
+            const prevBtn = document.getElementById('prevVideo');
+            const nextBtn = document.getElementById('nextVideo');
+            const videoContainer = document.querySelector('.video-container');
+            const videoSelect = document.getElementById('videoSelect');
+
+            // Populate dropdown from videos array
+            populateVideoDropdown();
+
+            // Load first video
+            loadVideo(0);
+
+            // Dropdown change event
+            if (videoSelect) {
+                videoSelect.addEventListener('change', (e) => {
+                    currentVideoIndex = parseInt(e.target.value);
+                    loadVideo(currentVideoIndex);
+                });
+            }
+
+            // Previous button
+            prevBtn.addEventListener('click', () => {
+                currentVideoIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
+                loadVideo(currentVideoIndex);
+                updateVideoSelect();
+            });
+
+            // Next button
+            nextBtn.addEventListener('click', () => {
+                currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+                loadVideo(currentVideoIndex);
+                updateVideoSelect();
+            });
+
+            // Touch/Swipe Support for Video
+            let videoTouchStartX = 0;
+            let videoTouchEndX = 0;
+            let videoTouchStartY = 0;
+            let videoTouchEndY = 0;
+
+            videoContainer.addEventListener('touchstart', (e) => {
+                videoTouchStartX = e.changedTouches[0].screenX;
+                videoTouchStartY = e.changedTouches[0].screenY;
+            }, { passive: true });
+
+            videoContainer.addEventListener('touchend', (e) => {
+                videoTouchEndX = e.changedTouches[0].screenX;
+                videoTouchEndY = e.changedTouches[0].screenY;
+                handleVideoSwipe();
+            }, { passive: true });
+
+            function handleVideoSwipe() {
+                const swipeThreshold = 50;
+                const horizontalDistance = Math.abs(videoTouchEndX - videoTouchStartX);
+                const verticalDistance = Math.abs(videoTouchEndY - videoTouchStartY);
+
+                // Only trigger if horizontal swipe is more significant than vertical
+                if (horizontalDistance > verticalDistance && horizontalDistance > swipeThreshold) {
+                    if (videoTouchEndX < videoTouchStartX) {
+                        // Swiped left - next video
+                        currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+                        loadVideo(currentVideoIndex);
+                        updateVideoSelect();
+                    }
+
+                    if (videoTouchEndX > videoTouchStartX) {
+                        // Swiped right - previous video
+                        currentVideoIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
+                        loadVideo(currentVideoIndex);
+                        updateVideoSelect();
+                    }
+                }
+            }
+            // Remove auto-play - user must manually play video
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        // Video scrolled out of view - pause it
+                        mainVideo.pause();
+                    }
+                    // Removed auto-play when video enters viewport
+                });
+            }, {
+                threshold: 0.5 // Trigger when 50% of video is visible
+            });
+
+
+            // Start observing the video container
+            observer.observe(videoContainer);
+
+            // Click anywhere on video to play/pause
+            mainVideo.addEventListener('click', (e) => {
+                if (mainVideo.paused) {
+                    mainVideo.play().catch(err => {
+                        console.log('Play prevented:', err);
+                    });
+                } else {
+                    mainVideo.pause();
+                }
+            });
+
+            // Also pause when clicking outside arrows
+            mainVideo.addEventListener('click', () => {
+                if (mainVideo.paused) {
+                    mainVideo.play().catch(err => {
+                        console.log('Play prevented:', err);
+                    });
+                } else {
+                    mainVideo.pause();
+                }
+            });
+
+
+            // Video ended - don't auto-play next
+            mainVideo.addEventListener('ended', () => {
+                mainVideo.controls = true;
+            });
+
+            // Update dropdown selection
+            function updateVideoSelect() {
+                if (videoSelect) {
+                    videoSelect.value = currentVideoIndex;
+                }
+            }
+        }
+
+        // Populate Video Dropdown from videos array
+        function populateVideoDropdown() {
+            const videoSelect = document.getElementById('videoSelect');
+
+            if (!videoSelect) return;
+
+            // Clear existing options
+            videoSelect.innerHTML = '';
+
+            // Add options from videos array
+            videos.forEach((video, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = video.caption;
+                videoSelect.appendChild(option);
+            });
+        }
+
+        // Load specific video
+        function loadVideo(index) {
+            const mainVideo = document.getElementById('mainVideo');
+            const videoCaption = document.getElementById('videoCaption');
+            const videoCounter = document.getElementById('videoCounter');
+
+            currentVideoIndex = index;
+
+            // Pause current video before switching
+            mainVideo.pause();
+
+            // Update video source from videos array
+            mainVideo.src = videos[index].url;
+            mainVideo.load();
+
+            // Update caption and counter from videos array
+            videoCaption.textContent = videos[index].caption;
+            videoCounter.textContent = `${index + 1} / ${videos.length}`;
+
+            // Auto-play new video (browser might block this)
+            mainVideo.play().catch(e => {
+                console.log('Autoplay prevented, user needs to click play');
+            });
+        }
+
+        // Initialize Alumni Slider with Touch Support
+        function initializeAlumniSlider() {
+            const sliderTrack = document.getElementById('alumniSliderTrack');
+            const prevBtn = document.getElementById('prevAlumni');
+            const nextBtn = document.getElementById('nextAlumni');
+            const dotsContainer = document.getElementById('alumniDots');
+            const alumniCards = sliderTrack.querySelectorAll('.alumni-card');
+            const totalAlumni = alumniCards.length;
+
+            if (!sliderTrack || !prevBtn || !nextBtn || !dotsContainer) {
+                console.log('Alumni slider elements not found');
+                return;
+            }
+
+            // Check if cards exist
+            if (totalAlumni === 0) {
+                console.log('No alumni cards found');
+                return;
+            }
+
+            // FIXED: Always show 1 card at a time
+            const cardsPerView = 1;
+            let maxIndex = totalAlumni - 1; // 0 to 9 for 10 cards
+
+
+
+            // Create dots - one for each card
+            function createDots() {
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i < totalAlumni; i++) {
+                    const dot = document.createElement('button');
+                    dot.className = 'alumni-dot';
+                    dot.setAttribute('aria-label', `Go to alumni ${i + 1}`);
+                    if (i === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => goToSlide(i));
+                    dotsContainer.appendChild(dot);
+                }
+            }
+
+            createDots();
+
+            // Update slider position
+            function updateSlider() {
+                const cardWidth = alumniCards[0].offsetWidth;
+                const gap = parseFloat(getComputedStyle(sliderTrack).gap) || 0;
+                const offset = -(currentAlumniIndex * (cardWidth + gap));
+                sliderTrack.style.transform = `translateX(${offset}px)`;
+
+                // Update dots
+                const dots = dotsContainer.querySelectorAll('.alumni-dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentAlumniIndex);
+                });
+
+                // Update button states
+                prevBtn.style.opacity = currentAlumniIndex === 0 ? '0.5' : '1';
+                prevBtn.style.cursor = currentAlumniIndex === 0 ? 'not-allowed' : 'pointer';
+                nextBtn.style.opacity = currentAlumniIndex === maxIndex ? '0.5' : '1';
+                nextBtn.style.cursor = currentAlumniIndex === maxIndex ? 'not-allowed' : 'pointer';
+            }
+
+            // Go to specific slide
+            function goToSlide(index) {
+                currentAlumniIndex = Math.max(0, Math.min(index, maxIndex));
+                updateSlider();
+            }
+
+            // Previous button
+            prevBtn.addEventListener('click', () => {
+                if (currentAlumniIndex > 0) {
+                    currentAlumniIndex--;
+                    updateSlider();
+                }
+            });
+
+            // Next button
+            nextBtn.addEventListener('click', () => {
+                if (currentAlumniIndex < maxIndex) {
+                    currentAlumniIndex++;
+                    updateSlider();
+                }
+            });
+
+
+            // Touch/Swipe Support for Alumni
+            let alumniTouchStartX = 0;
+            let alumniTouchEndX = 0;
+            let alumniTouchStartY = 0;
+            let alumniTouchEndY = 0;
+
+            sliderTrack.addEventListener('touchstart', (e) => {
+                alumniTouchStartX = e.changedTouches[0].screenX;
+                alumniTouchStartY = e.changedTouches[0].screenY;
+            }, { passive: true });
+
+            sliderTrack.addEventListener('touchend', (e) => {
+                alumniTouchEndX = e.changedTouches[0].screenX;
+                alumniTouchEndY = e.changedTouches[0].screenY;
+                handleAlumniSwipe();
+            }, { passive: true });
+
+            function handleAlumniSwipe() {
+                const swipeThreshold = 50;
+                const horizontalDistance = Math.abs(alumniTouchEndX - alumniTouchStartX);
+                const verticalDistance = Math.abs(alumniTouchEndY - alumniTouchStartY);
+
+                // Only trigger if horizontal swipe is more significant than vertical
+                if (horizontalDistance > verticalDistance && horizontalDistance > swipeThreshold) {
+                    if (alumniTouchEndX < alumniTouchStartX && currentAlumniIndex < maxIndex) {
+                        // Swiped left - next slide
+                        currentAlumniIndex++;
+                        updateSlider();
+                    }
+
+                    if (alumniTouchEndX > alumniTouchStartX && currentAlumniIndex > 0) {
+                        // Swiped right - previous slide
+                        currentAlumniIndex--;
+                        updateSlider();
+                    }
+
+                }
+            }
+
+            // Handle window resize
+            // Handle window resize
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    updateSlider();
+                }, 250);
+            });
+
+
+            // Initial update
+            // Initial update
+            updateSlider();
+
+            // DEBUG - Check card visibility
+            console.log('=== ALUMNI SLIDER DEBUG ===');
+            console.log('Total alumni cards:', totalAlumni);
+            console.log('Max index:', maxIndex);
+            console.log('Current index:', currentAlumniIndex);
+            console.log('Track width:', sliderTrack.offsetWidth);
+            if (alumniCards[0]) {
+                console.log('First card width:', alumniCards[0].offsetWidth);
+            }
+            alumniCards.forEach((card, index) => {
+                console.log(`Card ${index + 1}:`, {
+                    width: card.offsetWidth,
+                    display: window.getComputedStyle(card).display,
+                    minWidth: window.getComputedStyle(card).minWidth
+                });
+            });
+            console.log('========================');
+
+        }
+
+        // Notification Settings
+        function showNotificationSettings() {
+            alert('Notification settings will be available soon!');
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+
+        // ============================================
+        // PWA INSTALL PROMPT
+        // ============================================
+        let deferredPrompt;
+        const MAX_PROMPTS_PER_DAY = 2;
+
+        // Initialize install stats
+        let installStats = JSON.parse(localStorage.getItem('pwaInstallStats') || '{}');
+        const today = new Date().toDateString();
+
+        if (installStats.lastPromptDate !== today) {
+            installStats.lastPromptDate = today;
+            installStats.promptCount = 0;
+            localStorage.setItem('pwaInstallStats', JSON.stringify(installStats));
+        }
+
+        // Show install prompt
+        function showInstallPrompt() {
+            const stats = JSON.parse(localStorage.getItem('pwaInstallStats') || '{}');
+
+            if (stats.promptCount >= MAX_PROMPTS_PER_DAY || !deferredPrompt) {
+                console.log('⏸️ Install prompt conditions not met');
+                return;
+            }
+
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        `;
+
+            modal.innerHTML = `
+            <div style="
+                background: white;
+                padding: 2rem;
+                border-radius: 16px;
+                max-width: 400px;
+                width: 90%;
+                text-align: center;
+                animation: slideUp 0.4s ease;
+            ">
+                <div style="font-size: 3rem; margin-bottom: 1rem;"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg></div>
+                <h2 style="color: #0f172a; margin-bottom: 1rem; font-size: 1.5rem;">Install HCC School App</h2>
+                <p style="color: #64748b; margin-bottom: 2rem; line-height: 1.6;">
+                    Get quick access to admissions, gallery, and updates. Works offline!
+                </p>
+                <button id="installBtn" style="
+                    padding: 1rem 2rem;
+                    background: #1e3a8a;
+                    color: white;
+                    border: none;
+                    border-radius: 8px;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    width: 100%;
+                    margin-bottom: 0.5rem;
+                ">Install Now</button>
+                <button id="laterBtn" style="
+                    padding: 1rem 2rem;
+                    background: transparent;
+                    color: #1e3a8a;
+                    border: 2px solid #cbd5e1;
+                    border-radius: 8px;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    width: 100%;
+                ">Maybe Later</button>
+            </div>
+        `;
+
+            document.body.appendChild(modal);
+
+            document.getElementById('installBtn').addEventListener('click', async () => {
+                modal.remove();
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+
+                if (outcome === 'accepted') {
+                    console.log('✅ User installed the app');
+                    localStorage.setItem('pwaInstalled', 'true');
+                    // Show notification prompt after install
+                    setTimeout(() => showNotificationPrompt(), 2000);
+                }
+
+                deferredPrompt = null;
+            });
+
+            document.getElementById('laterBtn').addEventListener('click', () => {
+                modal.remove();
+            });
+
+            // Update stats
+            const newStats = JSON.parse(localStorage.getItem('pwaInstallStats') || '{}');
+            newStats.promptCount = (newStats.promptCount || 0) + 1;
+            localStorage.setItem('pwaInstallStats', JSON.stringify(newStats));
+        }
+
+        // Capture install prompt event
+        window.addEventListener('beforeinstallprompt', (e) => {
+            console.log('📱 Install prompt event captured');
+            e.preventDefault();
+            deferredPrompt = e;
+
+            // Check if already installed
+            if (window.matchMedia('(display-mode: standalone)').matches) {
+                console.log('✅ App already installed');
+                return;
+            }
+
+            const currentHour = new Date().getHours();
+            const stats = JSON.parse(localStorage.getItem('pwaInstallStats') || '{}');
+
+            // First prompt: Before 3 PM (if not shown today)
+            if (currentHour < 15 && stats.promptCount === 0) {
+                console.log('📱 Scheduling first install prompt');
+                setTimeout(() => showInstallPrompt(), 5000);
+            }
+
+            // Second prompt: After 3 PM (if only 1 shown today)
+            if (currentHour >= 15 && stats.promptCount === 1) {
+                console.log('📱 Scheduling second install prompt');
+                setTimeout(() => showInstallPrompt(), 10000);
+            }
+        });
+
+        // App installed event
+        window.addEventListener('appinstalled', () => {
+            console.log('✅ PWA was installed');
+            localStorage.setItem('pwaInstalled', 'true');
+            setTimeout(() => showNotificationPrompt(), 2000);
+        });
+
+        // Check if running as installed app
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            console.log('✅ Running as installed PWA');
+            document.body.classList.add('pwa-mode');
+        }
+
+        // ============================================
+        // SERVICE WORKER REGISTRATION
+        // ============================================
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then((registration) => {
+                        console.log('✅ SW registered:', registration.scope);
+
+                        // Check for updates every 5 minutes
+                        setInterval(() => {
+                            registration.update();
+                        }, 5 * 60 * 1000);
+
+                        // Listen for new service worker
+                        registration.addEventListener('updatefound', () => {
+                            const newWorker = registration.installing;
+                            newWorker.addEventListener('statechange', () => {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    if (confirm('New version available! Reload to update?')) {
+                                        newWorker.postMessage({ type: 'SKIP_WAITING' });
+                                        window.location.reload();
+                                    }
+                                }
+                            });
+                        });
+                    })
+                    .catch((error) => {
+                        console.error('❌ SW registration failed:', error);
+                    });
+
+                // Reload when new SW takes control
+                navigator.serviceWorker.addEventListener('controllerchange', () => {
+                    window.location.reload();
+                });
+            });
+        }
+
+        // ============================================
+        // HERO IMAGE SLIDER LOGIC
+        // ============================================
+        function initHeroSlider() {
+            const track = document.getElementById('sliderTrack');
+            const slides = Array.from(track.children);
+            const nextButton = document.getElementById('sliderNext');
+            const prevButton = document.getElementById('sliderPrev');
+            const dotsContainer = document.getElementById('sliderDots');
+            const dots = Array.from(dotsContainer.children);
+            
+            let currentIndex = 0;
+            let slideInterval;
+            const intervalTime = 2500; // 2.5 second auto slide
+
+            function updateSlider() {
+                // Translate the track
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Update active classes for Ken Burns zoom trigger
+                slides.forEach((slide, index) => {
+                    if (index === currentIndex) {
+                        slide.classList.add('active');
+                    } else {
+                        slide.classList.remove('active');
+                    }
+                });
+
+                // Update active dots
+                dots.forEach((dot, index) => {
+                    if (index === currentIndex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateSlider();
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                updateSlider();
+            }
+
+            // Start Auto slide
+            function startAutoSlide() {
+                clearInterval(slideInterval);
+                slideInterval = setInterval(nextSlide, intervalTime);
+            }
+
+            // Stop Auto slide
+            function stopAutoSlide() {
+                clearInterval(slideInterval);
+            }
+
+            // Click Events
+            nextButton.addEventListener('click', () => {
+                nextSlide();
+                startAutoSlide();
+            });
+
+            prevButton.addEventListener('click', () => {
+                prevSlide();
+                startAutoSlide();
+            });
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateSlider();
+                    startAutoSlide();
+                });
+            });
+
+            // Touch & Drag Swiping Support (Desktop + Mobile)
+            let startX = 0;
+            let currentX = 0;
+            let isDragging = false;
+            const sliderWrapper = document.getElementById('customSlider');
+
+            // Handle start
+            function dragStart(e) {
+                isDragging = true;
+                stopAutoSlide();
+                startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+                track.style.transition = 'none'; // Disable transition during drag
+            }
+
+            // Handle move
+            function dragMove(e) {
+                if (!isDragging) return;
+                currentX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+                const diffX = currentX - startX;
+                
+                // Calculate target position in pixel offset
+                const trackWidth = sliderWrapper.offsetWidth;
+                const currentOffset = -currentIndex * trackWidth;
+                track.style.transform = `translateX(${currentOffset + diffX}px)`;
+            }
+
+            // Handle end
+            function dragEnd(e) {
+                if (!isDragging) return;
+                isDragging = false;
+                track.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+                
+                const diffX = currentX - startX;
+                const threshold = sliderWrapper.offsetWidth * 0.15; // 15% threshold for swipe
+                
+                if (Math.abs(diffX) > threshold) {
+                    if (diffX > 0) {
+                        prevSlide();
+                    } else {
+                        nextSlide();
+                    }
+                } else {
+                    updateSlider(); // Snap back
+                }
+                
+                startX = 0;
+                currentX = 0;
+                startAutoSlide();
+            }
+
+            // Event bindings
+            sliderWrapper.addEventListener('touchstart', dragStart, { passive: true });
+            sliderWrapper.addEventListener('touchmove', dragMove, { passive: true });
+            sliderWrapper.addEventListener('touchend', dragEnd);
+
+            sliderWrapper.addEventListener('mousedown', dragStart);
+            sliderWrapper.addEventListener('mousemove', dragMove);
+            sliderWrapper.addEventListener('mouseup', dragEnd);
+            sliderWrapper.addEventListener('mouseleave', () => {
+                if (isDragging) dragEnd();
+            });
+
+            // Pause auto-sliding when hovered on desktop
+            sliderWrapper.addEventListener('mouseenter', stopAutoSlide);
+            sliderWrapper.addEventListener('mouseleave', startAutoSlide);
+
+            // Initialize
+            startAutoSlide();
+        }
+
+        // ============================================
+        // INITIALIZE ON PAGE LOAD
+        // ============================================
+        window.addEventListener('DOMContentLoaded', () => {
+            console.log('🚀 Page loaded, initializing icons...');
+
+            // Initialize Lucide Icons
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+
+            // Initialize Custom Hero Slider
+            initHeroSlider();
+
+            // Show notification prompt after 15 seconds if not already shown
+            setTimeout(() => {
+                console.log('⏰ Checking notification prompt conditions...');
+                if (Notification.permission === 'default' &&
+                    localStorage.getItem('notification_prompt_shown') !== 'true') {
+                    console.log('🔔 Showing notification prompt');
+                    showNotificationPrompt();
+                } else {
+                    console.log('⏸️ Notification prompt already shown or permission set');
+                }
+            }, 15000);
+        });
+
+        window.addEventListener('load', () => {
+            console.log('📦 Window fully loaded, initializing GSAP...');
+
+            // GSAP Animations
+            if (window.gsap && window.ScrollTrigger) {
+                gsap.registerPlugin(ScrollTrigger);
+
+                // Hero Entrance
+                const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+                heroTl.from('header', { y: -50, opacity: 0, duration: 1 })
+                    .from('.hero-text h1', { y: 30, opacity: 0, duration: 0.8 }, '-=0.6')
+                    .from('.hero-text p', { y: 20, opacity: 0, duration: 0.8 }, '-=0.6')
+                    .from('.cta-buttons', { y: 20, opacity: 0, duration: 0.8 }, '-=0.6')
+                    .from('.hero-image img', { scale: 0.95, opacity: 0, duration: 1 }, '-=0.8');
+
+
+
+                // Refresh calculations
+                ScrollTrigger.refresh();
+            }
+        });
+
+        // Make showNotificationSettings available globally
+        window.showNotificationSettings = showNotificationSettings;
+    </script>
+</body>
+
+</html>

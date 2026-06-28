@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse through HCC High School's image gallery showcasing events, activities, infrastructure, and memorable moments.">
+    <meta name="keywords" content="HCC High School Gallery, School Photos, Events Gallery, Solapur School">
+    <meta name="theme-color" content="#0f172a">
+    <title>Folder Gallery | HCC High School</title>
+    
+    <!-- Global Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Lucide Icons Vector Library -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- GSAP Animations & ScrollTrigger CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        /* Back Navigation */
+        .back-nav {
+            max-width: 1200px;
+            margin: 8rem auto 0;
+            padding: 0 2rem;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text-charcoal);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.25rem;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            background-color: var(--bg-light);
+            transition: all 0.2s ease;
+        }
+
+        .btn-back:hover {
+            background-color: var(--accent-blue);
+            color: var(--white);
+            border-color: var(--accent-blue);
+            transform: translateX(-4px);
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 3rem 2rem 4rem;
+            text-align: center;
+            background-color: var(--bg-light);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .page-header h1 {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Filter styling */
+        .filter-section {
+            padding: 3rem 2rem 2rem;
+            background-color: var(--bg-light);
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.5rem;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            background-color: var(--bg-light);
+            color: var(--text-charcoal);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--accent-blue);
+            color: var(--white);
+            border-color: var(--accent-blue);
+        }
+
+        .filter-count {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Gallery Grid styling */
+        .gallery-section {
+            padding: 4rem 2rem;
+            background-color: var(--bg-off);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .gallery-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            aspect-ratio: 1 / 1;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-blue);
+            box-shadow: var(--shadow-md);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: var(--white);
+            padding: 1.5rem 1rem 1rem;
+            font-size: 0.95rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: var(--radius-md);
+        }
+
+        .lightbox-caption {
+            color: var(--white);
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -2.5rem;
+            right: 0;
+            color: var(--white);
+            font-size: 2.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--white);
+            font-size: 2.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 1rem;
+        }
+
+        .lightbox-prev {
+            left: -4rem;
+        }
+
+        .lightbox-next {
+            right: -4rem;
+        }
+
+        @media (max-width: 768px) {
+            .back-nav {
+                margin-top: 6.5rem;
+            }
+            .lightbox-prev {
+                left: 1rem;
+            }
+            .lightbox-next {
+                right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-section">
+               <img src="hcclogo.jpg" alt="HCC Logo" class="logo-img">
+                
+                <div>
+                    <div class="school-name">HCC High School</div>
+                    <div class="school-location">Solapur</div>
+                </div>
+            </div>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="staff.html">Staff</a></li>
+                    <li><a href="admission.html">Admission</a></li>
+                    <li><a href="infrastructure.html">Infrastructure</a></li>
+                    <li><a href="gallery.html" class="active">Image Gallery</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                     <li><a href="notices.html">Notices</a></li>
+                </ul>
+            </nav>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+    <!-- Back Navigation -->
+    <div class="back-nav">
+        <a href="gallery.html" class="btn-back">
+            &larr; Back to Gallery
+        </a>
+    </div>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1 id="folderTitle">Loading Event...</h1>
+        <p id="folderCategory">Please wait...</p>
+    </div>
+
+    <!-- Category Filter -->
+    <section class="filter-section" style="display: none;">
+        <div class="filter-buttons" id="filterButtons">
+            <button class="filter-btn active" data-category="all">All</button>
+            <!-- Categories will be loaded dynamically from Supabase -->
+        </div>
+        <div class="filter-count" id="filterCount">Loading gallery...</div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="gallery-section">
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Gallery items will be loaded dynamically from Supabase -->
+        </div>
+        <div class="no-results" id="noResults">
+            <h3>No Images Found</h3>
+            <p>Try selecting a different category</p>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+            <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">&#10094;</button>
+            <img src="" alt="" class="lightbox-image" id="lightboxImage">
+            <button class="lightbox-nav lightbox-next" onclick="changeImage(1)">&#10095;</button>
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>HCC High School</h3>
+                <p>Excellence in education since 2000</p>
+                <p>Shaping young minds for a brighter tomorrow</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="about.html">About Us</a>
+                <a href="admission.html">Admissions</a>
+                <a href="staff.html">Faculty</a>
+                <a href="achievements.html">Achievements</a>
+            </div>
+
+            <div class="footer-section">
+    <h3>Contact Information</h3>
+
+    <!-- Address -->
+    <div class="footer-map-window">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3801.408602640286!2d75.91264877494157!3d17.67825598325992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc5da640306764d%3A0x6b447604473729e2!2sH.C.C.%20High%20School!5e0!3m2!1sen!2sin!4v1740193155106!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <!-- Address -->
+    <div class="contact-item ">
+        <a href="https://maps.app.goo.gl/4A8v38nVbPxUxZrM8" target="_blank" rel="noopener">
+            <span>Near St. Luke hospital, At Post Nannaj, North Solapur, Solapur- 413222</span>
+        </a>
+    </div>
+
+    <!-- Phone -->
+    <div class="contact-item">
+        <span class="contact-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6.62 10.79a15.53 15.53 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.07 21 3 13.93 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.59a1 1 0 0 1-.25 1.01l-2.2 2.19z"/>
+            </svg>
+        </span>
+        <a href="tel:+918625902920">+91 8625902920</a>
+    </div>
+
+    <!-- Instagram -->
+    <div class="contact-item">
+        <span class="contact-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.51 4.51 0 0 0 12 7.5zm0 7.3A2.8 2.8 0 1 1 14.8 12 2.81 2.81 0 0 1 12 14.8zM17.2 6.3a1.05 1.05 0 1 0 1.05 1.05 1.05 1.05 0 0 0-1.05-1.05z"/>
+            </svg>
+        </span>
+        <a href="https://www.instagram.com/hcc_high_school_/" target="_blank" rel="noopener">
+            @hcc_high_school_
+        </a>
+    </div>
+</div>
+
+
+            <div class="footer-section">
+                <h3>Notifications</h3>
+                <a href="javascript:void(0)" onclick="showNotificationSettings()">🔔 Notification Settings</a>
+                <p style="font-size: 0.85rem; color: var(--neutral-light); margin-top: 0.5rem;">
+                    Manage your notification preferences
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 HCC High School, Solapur. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Supabase JS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+        // ============================================
+        // SUPABASE CONFIGURATION
+        // ============================================
+        const SUPABASE_URL = 'https://yfrurcvidwuzrbgadwvt.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlmcnVyY3ZpZHd1enJiZ2Fkd3Z0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIzMDczMjYsImV4cCI6MjA5Nzg4MzMyNn0.V1n7yVj0xaqisekjhw_dzR8dewNuh84XEd0gd88rN1o';
+
+        const { createClient } = supabase;
+        const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // Global state
+        let folderId = '';
+        let folderDetails = null;
+        let subImages = [];
+        let currentImageIndex = 0;
+
+        // Parse ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        folderId = urlParams.get('id');
+
+        async function loadFolderData() {
+            if (!folderId) {
+                showErrorMessage('Invalid gallery folder link.');
+                return;
+            }
+            try {
+                // 1. Load folder detail
+                const { data: folder, error: folderError } = await supabaseClient
+                    .from('gallery')
+                    .select('*')
+                    .eq('id', folderId)
+                    .single();
+
+                if (folderError || !folder) {
+                    console.error('Error loading folder:', folderError);
+                    showErrorMessage('Folder not found.');
+                    return;
+                }
+
+                folderDetails = folder;
+                document.getElementById('folderTitle').textContent = folder.title;
+                document.getElementById('folderCategory').textContent = folder.category || 'Gallery';
+                document.title = `${folder.title} | HCC High School`;
+
+                // 2. Load sub-images
+                const { data: images, error: imagesError } = await supabaseClient
+                    .from('gallery_sub_images')
+                    .select('*')
+                    .eq('gallery_id', folderId)
+                    .order('display_order', { ascending: true });
+
+                if (imagesError) {
+                    console.error('Error loading sub-images:', imagesError);
+                    showErrorMessage('Unable to load folder images.');
+                    return;
+                }
+
+                subImages = images || [];
+                renderGrid(subImages);
+            } catch (err) {
+                console.error('Failed to load:', err);
+                showErrorMessage('An unexpected error occurred.');
+            }
+        }
+
+        function renderGrid(items) {
+            const grid = document.getElementById('galleryGrid');
+            grid.innerHTML = '';
+
+            if (items.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 2rem;">
+                        <h3 style="font-size: 1.5rem; color: var(--neutral-warm); margin-bottom: 1rem;">
+                            No images in this folder
+                        </h3>
+                        <p style="color: var(--neutral-warm);">
+                            Check back later for updates.
+                        </p>
+                    </div>
+                `;
+                return;
+            }
+
+            items.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'gallery-item';
+                div.innerHTML = `
+                    <img src="${item.image_url}" 
+                         alt="Gallery Image" 
+                         class="gallery-image" 
+                         loading="lazy"
+                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect fill=%22%23E7D8CA%22 width=%22300%22 height=%22300%22/%3E%3Ctext fill=%22%23531C22%22 font-size=%2240%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3EImage%3C/text%3E%3C/svg%3E'">
+                    <div class="gallery-caption">
+                        <div class="gallery-title" style="font-weight: 700; margin-bottom: 0.2rem;">${folderDetails.title}</div>
+                        <div class="gallery-category" style="font-size: 0.8rem; opacity: 0.85; text-transform: uppercase; letter-spacing: 0.5px;">${folderDetails.category || 'Gallery'}</div>
+                    </div>
+                `;
+                div.addEventListener('click', () => openLightbox(index));
+                grid.appendChild(div);
+            });
+
+            // Re-create lucide icons for dynamic items
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+
+            // GSAP ScrollTrigger stagger entrance animations
+            setTimeout(() => {
+                if (window.gsap && window.ScrollTrigger) {
+                    ScrollTrigger.getAll().forEach(trigger => {
+                        if (trigger.vars.trigger && trigger.vars.trigger.toString().includes('galleryGrid')) {
+                            trigger.kill();
+                        }
+                    });
+
+                    gsap.from('.gallery-item', {
+                        scrollTrigger: {
+                            trigger: '#galleryGrid',
+                            start: 'top 85%',
+                        },
+                        scale: 0.9,
+                        opacity: 0,
+                        duration: 0.6,
+                        stagger: 0.05,
+                        ease: 'power3.out'
+                    });
+                }
+            }, 50);
+        }
+
+        // ============================================
+        // LIGHTBOX FUNCTIONS
+        // ============================================
+        function openLightbox(index) {
+            if (index < 0 || index >= subImages.length) return;
+            currentImageIndex = index;
+            const item = subImages[index];
+            
+            document.getElementById('lightboxImage').src = item.image_url;
+            document.getElementById('lightboxCaption').textContent = folderDetails.title;
+            document.getElementById('lightbox').classList.add('show');
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeImage(direction) {
+            if (subImages.length === 0) return;
+            currentImageIndex += direction;
+            
+            // Loop around
+            if (currentImageIndex < 0) {
+                currentImageIndex = subImages.length - 1;
+            } else if (currentImageIndex >= subImages.length) {
+                currentImageIndex = 0;
+            }
+            
+            const item = subImages[currentImageIndex];
+            document.getElementById('lightboxImage').src = item.image_url;
+        }
+
+        // Close lightbox on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowLeft') {
+                changeImage(-1);
+            } else if (e.key === 'ArrowRight') {
+                changeImage(1);
+            }
+        });
+
+        // Close lightbox on background click
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') {
+                closeLightbox();
+            }
+        });
+
+        function showErrorMessage(message = 'Unable to load gallery') {
+            const grid = document.getElementById('galleryGrid');
+            grid.innerHTML = `
+                <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 2rem;">
+                    <h3 style="font-size: 1.5rem; color: var(--maroon-primary); margin-bottom: 1rem;">
+                        ${message}
+                    </h3>
+                    <p style="color: var(--neutral-warm); margin-bottom: 1.5rem;">
+                        Please try again.
+                    </p>
+                    <button onclick="loadFolderData()" 
+                            style="padding: 0.8rem 2rem; background: var(--maroon-primary); 
+                                   color: white; border: none; border-radius: 8px; cursor: pointer; 
+                                   font-size: 1rem; font-weight: 600;">
+                        Retry
+                    </button>
+                </div>
+            `;
+        }
+
+        // MOBILE MENU & HEADER SCROLL
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+        }
+
+        let lastScroll = 0;
+        const header = document.querySelector('header');
+
+        if (header) {
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset;
+                
+                if (currentScroll <= 0) {
+                    header.style.transform = 'translateY(0)';
+                    return;
+                }
+                
+                if (currentScroll > lastScroll && currentScroll > 80) {
+                    header.style.transform = 'translateY(-100%)';
+                } else {
+                    header.style.transform = 'translateY(0)';
+                }
+                
+                lastScroll = currentScroll;
+            });
+        }
+
+        // initialize
+        window.addEventListener('DOMContentLoaded', () => {
+            loadFolderData();
+
+            // Initialize Lucide Icons
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+
+            // GSAP Page Entrance
+            if (window.gsap) {
+                const headerTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+                headerTl.from('header', { y: -50, opacity: 0, duration: 1 })
+                        .from('.back-nav', { x: -30, opacity: 0, duration: 0.8 }, '-=0.6')
+                        .from('.page-header h1', { y: 30, opacity: 0, duration: 0.8 }, '-=0.6')
+                        .from('.page-header p', { y: 20, opacity: 0, duration: 0.8 }, '-=0.6');
+            }
+        });
+        </script>
+</body>
+</html>

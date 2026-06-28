@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HCC Background Design Concepts Sandbox</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Playfair+Display:wght@700&display=swap">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* General Sandbox Layout */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Default Base Variables */
+            --bg-base: #ffffff;
+            --text-base: #18181b;
+            --card-base: rgba(255, 255, 255, 0.85);
+            --border-base: #e4e4e7;
+            --accent-base: #0f172a;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-base);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+            transition: background 0.5s ease, color 0.5s ease;
+        }
+
+        /* Fixed Background Simulation Layer */
+        #bgSimulator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            background: #ffffff;
+        }
+
+        /* Overlay for animated backgrounds */
+        #bgOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .sandbox-control-panel {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid #334155;
+            padding: 1.5rem;
+            color: #f1f5f9;
+            z-index: 10;
+        }
+
+        .sandbox-header h1 {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+            color: #f8fafc;
+        }
+
+        .sandbox-header p {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Switcher Grid for 12 Backgrounds */
+        .bg-switcher {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .bg-switcher { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 640px) {
+            .bg-switcher { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .bg-btn {
+            background: #1e293b;
+            color: #cbd5e1;
+            border: 1px solid #475569;
+            padding: 0.6rem 0.8rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+
+        .bg-btn:hover {
+            background: #334155;
+            border-color: #64748b;
+        }
+
+        .bg-btn.active {
+            background: #10b981;
+            border-color: #34d399;
+            color: #ffffff;
+            box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+        }
+
+        .bg-btn span.category-label {
+            font-size: 0.6rem;
+            opacity: 0.75;
+            text-transform: uppercase;
+        }
+
+        /* Info Display Bar */
+        .info-bar {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid #334155;
+            padding: 0.75rem 1.25rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+        }
+
+        /* ==========================================================================
+           MOCK SITE CONTAINER (REPRESENTS READABILITY DEMO)
+           ========================================================================== */
+        .mock-container {
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+            flex: 1;
+            z-index: 1;
+        }
+
+        .mock-hero {
+            background: var(--card-base);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-base);
+            padding: 4rem 3rem;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+        }
+
+        .mock-hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-base);
+        }
+
+        .mock-hero p {
+            font-size: 1.05rem;
+            color: var(--text-base);
+            opacity: 0.9;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .mock-btn {
+            background: var(--accent-base);
+            color: #ffffff;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .mock-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .mock-grid { grid-template-columns: 1fr; }
+        }
+
+        .mock-card {
+            background: var(--card-base);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border-base);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+        }
+
+        .mock-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: var(--accent-base);
+        }
+
+        .mock-card p {
+            font-size: 0.9rem;
+            color: var(--text-base);
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* ==========================================================================
+           BACKGROUND STYLING PATTERNS & GLOWING EFFECTS
+           ========================================================================== */
+        
+        /* 1. Animated Ambient Mesh (Floating blobs) */
+        @keyframes floatBlob1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(100px, 80px) scale(1.2); }
+        }
+        @keyframes floatBlob2 {
+            0%, 100% { transform: translate(0, 0) scale(1.2); }
+            50% { transform: translate(-120px, -60px) scale(0.9); }
+        }
+        .mesh-blob {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        /* 3. Micro Grid Pattern */
+        .grid-pattern {
+            background-size: 30px 30px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+        }
+
+        /* 6. Leaf Shadow Simulation */
+        .leaf-shadow {
+            position: absolute;
+            top: -10%;
+            right: -5%;
+            width: 600px;
+            height: 600px;
+            opacity: 0.15;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M10,90 Q30,60 50,50 Q70,40 90,10 Q80,40 50,60 Q20,80 10,90' fill='%236e8b7e'/%3E%3Cpath d='M5,70 Q40,50 60,30 Q80,10 95,5 Q60,30 30,55 Q10,80 5,70' fill='%236e8b7e'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            filter: blur(8px);
+            animation: windSway 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes windSway {
+            0% { transform: rotate(0deg) translate(0, 0); }
+            100% { transform: rotate(3deg) translate(15px, 10px); }
+        }
+
+        /* 7. Watercolor Wash */
+        .watercolor-canvas {
+            background: radial-gradient(circle at 10% 20%, rgba(224, 242, 254, 0.6) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(220, 252, 231, 0.6) 0%, transparent 40%);
+        }
+
+        /* 8. Fine Grainy Paper Pattern */
+        .paper-grain {
+            background-color: #FAF8F5;
+            background-image: radial-gradient(rgba(0,0,0,0.15) 1px, transparent 0);
+            background-size: 4px 4px;
+        }
+
+        /* 9. Ambient Light Leak (Sky and Sunbeam glow) */
+        .light-leak {
+            background: radial-gradient(circle at 20% 0%, rgba(254, 243, 199, 0.7) 0%, transparent 60%),
+                        linear-gradient(to bottom, #ffffff, #fefaf0);
+        }
+
+        /* 10. Forest Canopy Silhouette bottom */
+        .canopy-layer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 250px;
+            opacity: 0.08;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%230f2d1d' d='M0,160 C120,180 240,240 360,200 C480,160 600,80 720,100 C840,120 960,220 1080,240 C1200,260 1320,180 1440,190 L1440,320 L1200,320 L1080,320 L960,320 L720,320 L600,320 L480,320 L360,320 L240,320 L120,320 L0,320 Z'/%3E%3C/svg%3E");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /* 11 & 12: Mesh Morphing & Wavy styles animations */
+        @keyframes meshMoveSlow1 {
+            0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            50% { transform: translate(80px, 50px) scale(1.15) rotate(15deg); }
+        }
+
+        @keyframes meshMoveSlow2 {
+            0%, 100% { transform: translate(0, 0) scale(1.15) rotate(0deg); }
+            50% { transform: translate(-90px, -40px) scale(1) rotate(-15deg); }
+        }
+
+        @keyframes meshMoveSlow3 {
+            0%, 100% { transform: translate(0, 0) scale(0.9) rotate(0deg); }
+            50% { transform: translate(60px, -60px) scale(1.1) rotate(10deg); }
+        }
+
+        @keyframes meshMoveSlow4 {
+            0%, 100% { transform: translate(0, 0) scale(1.1) rotate(0deg); }
+            50% { transform: translate(-50px, 80px) scale(1.2) rotate(-10deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Simulator Control Panel -->
+    <div class="sandbox-control-panel">
+        <div class="sandbox-header">
+            <h1>HCC Page Background Concepts Sandbox</h1>
+            <p>Compare the original 10 designs alongside 2 new custom-made Flowing and Wavy Mesh Gradient variations (designed as light/white canvases with darker highlighted elements).</p>
+            
+            <!-- Grid switcher -->
+            <div class="bg-switcher">
+                <!-- Original Tech/Modern styles -->
+                <button class="bg-btn active" onclick="setBg(this, 'plain')">
+                    <span class="category-label">Default</span>
+                    <span>01. Pure White</span>
+                </button>
+                <button class="bg-btn" onclick="setBg(this, 'mesh')">
+                    <span class="category-label">Tech / Dynamic</span>
+                    <span>02. Mesh Gradient</span>
+                </button>
+                <button class="bg-btn" onclick="setBg(this, 'aurora')">
+                    <span class="category-label">Tech / Dynamic</span>
+                    <span>03. Aurora Wave</span>
+                </button>
+                <button class="bg-btn" onclick="setBg(this, 'grid')">
+                    <span class="category-label">Tech / Dynamic</span>
+                    <span>04. Micro Grid</span>
+                </button>
+                <button class="bg-btn" onclick="setBg(this, 'glass')">
+                    <span class="category-label">Tech / Dynamic</span>
+                    <span>05. Heavy Frosted</span>
+                </button>
+
+                <!-- Calm & Nature-themed school styles -->
+                <button class="bg-btn" onclick="setBg(this, 'eucalyptus')">
+                    <span class="category-label">School / Nature</span>
+                    <span>06. Eucalyptus Shadows</span>
+                </button>
+                <button class="bg-btn" onclick="setBg(this, 'watercolor')">
+                    <span class="category-label">School / Nature</span>
+                    <span>07. Watercolor Wash</span>
+                </button>
+                <button class="bg-btn" onclick="setBg(this, 'paper')">
+                    <span class="category-label">School / Nature</span>
+                    <span>08. Classic Paper Grain</span>
+                </button>
+                <button class="bg-btn" onclick="setBg(this, 'sunbeams')">
+                    <span class="category-label">School / Nature</span>
+                    <span>09. Warm Light Leak</span>
+                </button>
+                <button class="bg-btn" onclick="setBg(this, 'canopy')">
+                    <span class="category-label">School / Nature</span>
+                    <span>10. Forest Canopy</span>
+                </button>
+
+                <!-- New requested custom Mesh variations -->
+                <button class="bg-btn" onclick="setBg(this, 'flowingMesh')">
+                    <span class="category-label">Mesh Morph</span>
+                    <span>11. Shifting Blue & Green Mesh</span>
+                </button>
+                <button class="bg-btn" onclick="setBg(this, 'wavyMesh')">
+                    <span class="category-label">Mesh Morph</span>
+                    <span>12. Rolling Liquid Wave</span>
+                </button>
+            </div>
+
+            <!-- Description Bar -->
+            <div class="info-bar" id="infoBar">
+                Active Theme: <strong>01. Pure White</strong> — Minimalist flat layout to ensure default maximum text accessibility.
+            </div>
+        </div>
+    </div>
+
+    <!-- Simulator Background Layers -->
+    <div id="bgSimulator"></div>
+    <div id="bgOverlay"></div>
+
+    <!-- Readability Showcase Page -->
+    <div class="mock-container">
+        <div class="mock-hero">
+            <h2>Welcome to HCC High School</h2>
+            <p>Inspiring scholastic growth, building deep personal values, and mentoring next-generation leaders in a calm, focused environment.</p>
+            <button class="mock-btn">Explore Admission</button>
+        </div>
+
+        <div class="mock-grid">
+            <div class="mock-card">
+                <h3>Our Principles</h3>
+                <p>Nurturing empathy, mutual respect, and social integrity alongside high academic standards.</p>
+            </div>
+            <div class="mock-card">
+                <h3>Creative Arts</h3>
+                <p>Equipping students with music studios, debate clubs, and visual canvas expression boards.</p>
+            </div>
+            <div class="mock-card">
+                <h3>Nature Trails</h3>
+                <p>Engaging learning steps under tree shades and campus botanical conservation projects.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const themes = {
+            plain: {
+                title: '01. Pure White',
+                desc: 'Minimalist flat layout to ensure default maximum text accessibility.',
+                style: { background: '#ffffff', opacity: 0 },
+                vars: { '--card-base': '#ffffff', '--border-base': '#e4e4e7', '--text-base': '#18181b', '--accent-base': '#0f172a' }
+            },
+            mesh: {
+                title: '02. Mesh Gradient',
+                desc: 'Interactive floating blurred blobs (lavender and blue) animating slowly in the background.',
+                style: { background: '#f5f7ff', opacity: 1 },
+                vars: { '--card-base': 'rgba(255, 255, 255, 0.75)', '--border-base': 'rgba(0,0,0,0.06)', '--text-base': '#1e1b4b', '--accent-base': '#4f46e5' },
+                customHtml: `<div class="mesh-blob" style="background:#e0e7ff; top: 10%; left: 10%; animation: floatBlob1 15s infinite alternate;"></div>
+                             <div class="mesh-blob" style="background:#fae8ff; bottom: 10%; right: 10%; animation: floatBlob2 18s infinite alternate;"></div>`
+            },
+            aurora: {
+                title: '03. Aurora Wave',
+                desc: 'A linear wave gradient that pans slowly across the viewport background.',
+                style: { background: 'linear-gradient(135deg, #e0f2fe, #f5f3ff, #fdf2f8)', backgroundSize: '400% 400%', animation: 'windSway 15s ease infinite alternate', opacity: 1 },
+                vars: { '--card-base': 'rgba(255, 255, 255, 0.8)', '--border-base': 'rgba(0,0,0,0.05)', '--text-base': '#18181b', '--accent-base': '#0f172a' }
+            },
+            grid: {
+                title: '04. Micro Grid',
+                desc: 'Delicate mathematical micro grid lines forming a modern template outline.',
+                style: { background: '#fafafa', opacity: 1 },
+                className: 'grid-pattern',
+                vars: { '--card-base': '#ffffff', '--border-base': '#111111', '--text-base': '#18181b', '--accent-base': '#111111' }
+            },
+            glass: {
+                title: '05. Heavy Frosted',
+                desc: 'Content cards use heavy blurred filters overlaying dynamic, color-rich static backdrops.',
+                style: { background: 'linear-gradient(20deg, #fce7f3, #e0f2fe)', opacity: 1 },
+                vars: { '--card-base': 'rgba(255, 255, 255, 0.45)', '--border-base': 'rgba(255,255,255,0.6)', '--text-base': '#0f172a', '--accent-base': '#0f172a' }
+            },
+            eucalyptus: {
+                title: '06. Eucalyptus Shadows',
+                desc: 'Subtle green foliage silhouettes sway slightly in the upper corner, simulating sunlight filtering through windows.',
+                style: { background: '#fcfdfd', opacity: 1 },
+                vars: { '--card-base': 'rgba(255,255,255,0.9)', '--border-base': '#e6ebe8', '--text-base': '#2a3430', '--accent-base': '#2a3430' },
+                customHtml: `<div class="leaf-shadow"></div>`
+            },
+            watercolor: {
+                title: '07. Watercolor Wash',
+                desc: 'Faint artistic washes of sky-blue and botanical leaf-green at the viewport margins.',
+                style: { background: '#ffffff', opacity: 1 },
+                className: 'watercolor-canvas',
+                vars: { '--card-base': 'rgba(255, 255, 255, 0.85)', '--border-base': '#e2eaf0', '--text-base': '#18181b', '--accent-base': '#0f172a' }
+            },
+            paper: {
+                title: '08. Classic Paper Grain',
+                desc: 'Warm parchment paper texture that matches traditional academic publications.',
+                style: { background: '#faf8f5', opacity: 1 },
+                className: 'paper-grain',
+                vars: { '--card-base': '#ffffff', '--border-base': '#e5dfd5', '--text-base': '#1c1c1f', '--accent-base': '#1c1c1f' }
+            },
+            sunbeams: {
+                title: '09. Warm Light Leak',
+                desc: 'A gentle glowing leakage of warm sunshine from the upper left side down.',
+                style: { background: '#ffffff', opacity: 1 },
+                className: 'light-leak',
+                vars: { '--card-base': 'rgba(255, 255, 255, 0.9)', '--border-base': '#f2ebe0', '--text-base': '#18181b', '--accent-base': '#0f172a' }
+            },
+            canopy: {
+                title: '10. Forest Canopy',
+                desc: 'A delicate nature tree silhouette at the page bottom, blending softly into clean off-white.',
+                style: { background: 'linear-gradient(to bottom, #fcfdfe, #f5f8f6)', opacity: 1 },
+                vars: { '--card-base': 'rgba(255, 255, 255, 0.9)', '--border-base': '#e1e8e3', '--text-base': '#1f2e24', '--accent-base': '#1f2e24' },
+                customHtml: `<div class="canopy-layer"></div>`
+            },
+            flowingMesh: {
+                title: '11. Shifting Blue & Green Mesh',
+                desc: 'A white background featuring shifting, morphing mesh gradients in dark blue, light blue, and teal/green highlights that flow slowly.',
+                style: { background: '#f5f8fc', opacity: 1 },
+                vars: { '--card-base': 'rgba(255, 255, 255, 0.85)', '--border-base': '#dbeafe', '--text-base': '#1e293b', '--accent-base': '#1e40af' },
+                customHtml: `<div class="mesh-blob" style="background:rgba(30, 58, 138, 0.12); top: 10%; left: 10%; animation: meshMoveSlow1 20s infinite alternate;"></div>
+                             <div class="mesh-blob" style="background:rgba(13, 148, 136, 0.1); bottom: 15%; right: 10%; animation: meshMoveSlow2 25s infinite alternate;"></div>
+                             <div class="mesh-blob" style="background:rgba(22, 163, 74, 0.08); top: 50%; left: 60%; animation: meshMoveSlow3 22s infinite alternate;"></div>
+                             <div class="mesh-blob" style="background:rgba(79, 70, 229, 0.1); bottom: 40%; left: 15%; animation: meshMoveSlow4 28s infinite alternate;"></div>
+                             <div class="mesh-blob" style="background:rgba(8, 145, 178, 0.1); top: 20%; right: 25%; animation: meshMoveSlow1 18s infinite alternate-reverse;"></div>`
+            },
+            wavyMesh: {
+                title: '12. Rolling Liquid Wave',
+                desc: 'A clean light canvas with deep eucalyptus and teal wavy fluids rolling slowly at the bottom.',
+                style: { background: '#f4f8f6', opacity: 1 },
+                vars: { '--card-base': 'rgba(255, 255, 255, 0.85)', '--border-base': '#dceae2', '--text-base': '#1f2e25', '--accent-base': '#5e7d69' },
+                customHtml: `<svg style="position:absolute; bottom:0; left:0; width:100%; height:45%; fill:rgba(119, 138, 124, 0.12);" viewBox="0 0 1440 320">
+                    <path d="M0,160 C320,300 640,20 960,180 C1120,260 1280,240 1440,160 L1440,320 L0,320 Z">
+                        <animate attributeName="d" dur="10s" repeatCount="indefinite"
+                            values="M0,160 C320,300 640,20 960,180 C1120,260 1280,240 1440,160 L1440,320 L0,320 Z;
+                                    M0,180 C400,100 800,240 1000,140 C1200,40 1320,260 1440,180 L1440,320 L0,320 Z;
+                                    M0,160 C320,300 640,20 960,180 C1120,260 1280,240 1440,160 L1440,320 L0,320 Z" />
+                    </path>
+                </svg>`
+            }
+        };
+
+        function setBg(btn, key) {
+            // Button classes
+            document.querySelectorAll('.bg-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const simulator = document.getElementById('bgSimulator');
+            const overlay = document.getElementById('bgOverlay');
+            const data = themes[key];
+
+            // Reset custom inline classes
+            simulator.className = '';
+            overlay.innerHTML = '';
+            overlay.style.opacity = '0';
+
+            // Apply base backgrounds
+            if (data.style.background) simulator.style.background = data.style.background;
+            if (data.style.backgroundSize) simulator.style.backgroundSize = data.style.backgroundSize;
+            if (data.style.animation) simulator.style.animation = data.style.animation;
+            else simulator.style.animation = '';
+
+            // Apply custom pattern classes
+            if (data.className) simulator.classList.add(data.className);
+
+            // Apply custom overlays HTML (like blobs or leaf shadows)
+            if (data.customHtml) {
+                overlay.innerHTML = data.customHtml;
+                overlay.style.opacity = '1';
+            }
+
+            // Apply custom base colors variables (CSS Custom Properties)
+            if (data.vars) {
+                for (const [k, v] of Object.entries(data.vars)) {
+                    document.documentElement.style.setProperty(k, v);
+                }
+            }
+
+            // Update Info Bar text
+            document.getElementById('infoBar').innerHTML = `Active Theme: <strong>${data.title}</strong> — ${data.desc}`;
+        }
+    </script>
+</body>
+</html>
