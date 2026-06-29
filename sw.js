@@ -2,8 +2,8 @@
 // Version: 1.0.0
 // Strategy: Network First (Always fresh from GitHub)
 
-const CACHE_NAME = 'hcc-school-v1.0.0';
-const CACHE_VERSION = '1.0.0';
+const CACHE_NAME = 'hcc-school-v1.0.1';
+const CACHE_VERSION = '1.0.1';
 
 // Files to cache immediately on install
 const PRECACHE_URLS = [

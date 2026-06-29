@@ -1,16 +1,16 @@
 {
   "@context": "https://schema.org",
   "@type": "HighSchool",
-  "name": "Hindustan Covenant Church High School and Junior College",
-  "alternateName": "HCC High School Solapur",
-  "url": "https://hccsolapur.in",
-  "logo": "https://hccsolapur.in/hcclogo.jpg",
-  "image": "https://hccsolapur.in/hcc.jpg",
-  "description": "HCC High School and Junior College in Solapur, providing quality education",
+  "name": "Hindustani Covenant Church High School and Junior College",
+  "alternateName": "HCC High School Nannaj",
+  "url": "https://hccschoolnannaj.in",
+  "logo": "https://hccschoolnannaj.in/hcclogo.jpg",
+  "image": "https://hccschoolnannaj.in/hcc.jpg",
+  "description": "HCC High School and Junior College in Nannaj, providing quality education",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Your Street Address",
-    "addressLocality": "Solapur",
+    "addressLocality": "Nannaj",
     "addressRegion": "Maharashtra",
     "postalCode": "413001",
     "addressCountry": "IN"
@@ -20,7 +20,11 @@
     "telephone": "+91-8625902920",
     "contactType": "Admissions",
     "areaServed": "IN",
-    "availableLanguage": ["English", "Hindi", "Marathi"]
+    "availableLanguage": [
+      "English",
+      "Hindi",
+      "Marathi"
+    ]
   },
   "sameAs": [
     "YOUR_FACEBOOK_URL",

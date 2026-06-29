@@ -5,4 +5,4 @@ Allow: /
 Disallow: /admin.html
 
 # Sitemap location
-Sitemap: https://hccsolapur.in/sitemap.xml
+Sitemap: https://hccschoolnannaj.in/sitemap.xml
